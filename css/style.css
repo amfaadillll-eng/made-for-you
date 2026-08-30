@@ -103,7 +103,7 @@ button {
 
 
 /* =========================================================
-   CINEMATIC BACKGROUND
+   CINEMATIC BACKGROUND — DESKTOP
 ========================================================= */
 
 .background {
@@ -132,12 +132,16 @@ button {
         url("../images/background.jpg");
 
     background-size: cover;
+
     background-position: center center;
+
     background-repeat: no-repeat;
 }
 
 
-/* cinematic glow */
+/* =========================================================
+   CINEMATIC GLOW
+========================================================= */
 
 .background::after {
     content: "";
@@ -374,13 +378,6 @@ button {
 .intro-section .eyebrow {
     margin-bottom: 34px;
 }
-
-
-/*
-   CORMORANT GARAMOND
-   Matches the elegant editorial style
-   of the background image.
-*/
 
 .hero-title {
     display: flex;
@@ -1385,7 +1382,7 @@ button {
 
 
 /* =========================================================
-   MOBILE — FACE VISIBILITY FIX
+   MOBILE — 30% RIGHT POSITION
 ========================================================= */
 
 @media screen and (max-width: 700px) {
@@ -1405,13 +1402,6 @@ button {
 
     /* =====================================================
        MOBILE BACKGROUND
-
-       The original image has the person on the RIGHT.
-
-       Instead of "cover", we preserve the image height
-       and anchor its RIGHT side to the phone.
-
-       This prevents the face from being cropped away.
     ===================================================== */
 
     .background {
@@ -1424,35 +1414,40 @@ button {
         width: 100vw !important;
         height: 100vh !important;
 
+        z-index: -5 !important;
+
         background-color: #080808 !important;
 
         background-image:
             linear-gradient(
                 180deg,
-                rgba(8,8,8,0.55) 0%,
-                rgba(8,8,8,0.25) 32%,
-                rgba(8,8,8,0.38) 58%,
+                rgba(8,8,8,0.48) 0%,
+                rgba(8,8,8,0.20) 35%,
+                rgba(8,8,8,0.35) 60%,
                 rgba(8,8,8,0.78) 100%
             ),
             url("../images/background.jpg") !important;
 
         /*
-         * IMPORTANT:
-         * Image height follows the phone height.
-         * This prevents "cover" from zooming/cropping
-         * the woman's face.
+         * Keep the image height exactly equal
+         * to the phone height.
+         *
+         * This prevents the face from becoming
+         * cropped vertically.
          */
         background-size:
             auto 100vh !important;
 
         /*
-         * RIGHT EDGE OF IMAGE = RIGHT EDGE OF PHONE
+         * 30% TO THE RIGHT
          *
-         * This shifts the composition left and exposes
-         * the person's face.
+         * 50% = center
+         * 80% = 30% more toward the RIGHT
+         *
+         * This moves the person's face into view.
          */
         background-position:
-            right center !important;
+            80% center !important;
 
         background-repeat:
             no-repeat !important;
@@ -1508,8 +1503,7 @@ button {
     ===================================================== */
 
     .section {
-        padding:
-            100px 7vw;
+        padding: 100px 7vw;
     }
 
     .section-number {
@@ -1657,8 +1651,8 @@ button {
     }
 
     /*
-     * Keep RIGHT side of image visible.
-     * Do NOT use center here.
+     * SAME 30% RIGHT POSITION
+     * Even on narrow phones.
      */
     .background {
 
@@ -1666,7 +1660,7 @@ button {
             auto 100vh !important;
 
         background-position:
-            right center !important;
+            80% center !important;
     }
 
     .intro-footer {
