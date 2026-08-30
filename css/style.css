@@ -1,6 +1,12 @@
 /* =========================================================
    MADE FOR YOU
-   PREMIUM DARK / CINEMATIC VISUAL SYSTEM
+   PREMIUM CINEMATIC VISUAL SYSTEM
+   MOBILE FACE-FRIENDLY VERSION
+========================================================= */
+
+
+/* =========================================================
+   ROOT
 ========================================================= */
 
 :root {
@@ -18,10 +24,11 @@
     --gold-light: #e2c98f;
     --gold-dark: #806536;
 
-    --border: rgba(199, 167, 106, 0.20);
+    --border: rgba(199,167,106,0.20);
     --border-soft: rgba(255,255,255,0.08);
 
-    --serif: "Cormorant Garamond", Georgia, serif;
+    /* Elegant editorial font */
+    --serif: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
     --sans: "Inter", Arial, sans-serif;
 
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -91,8 +98,10 @@ button {
     position: absolute;
     width: 34px;
     height: 34px;
+
     border: 1px solid rgba(199,167,106,0.55);
     border-radius: 50%;
+
     transform: translate(-50%, -50%);
 
     transition:
@@ -109,10 +118,11 @@ button {
 .background {
     position: fixed;
     inset: 0;
-    z-index: -5;
 
     width: 100%;
     height: 100vh;
+
+    z-index: -5;
 
     overflow: hidden;
 
@@ -122,9 +132,9 @@ button {
         linear-gradient(
             90deg,
             rgba(8,8,8,0.94) 0%,
-            rgba(8,8,8,0.78) 30%,
-            rgba(8,8,8,0.45) 60%,
-            rgba(8,8,8,0.60) 100%
+            rgba(8,8,8,0.78) 28%,
+            rgba(8,8,8,0.45) 62%,
+            rgba(8,8,8,0.48) 100%
         ),
         url("../images/background.jpg");
 
@@ -134,21 +144,24 @@ button {
 }
 
 
-/* subtle cinematic glow */
+/* =========================================================
+   CINEMATIC LIGHT
+========================================================= */
 
 .background::after {
     content: "";
+
     position: absolute;
     inset: 0;
 
+    pointer-events: none;
+
     background:
         radial-gradient(
-            circle at 50% 45%,
-            rgba(199,167,106,0.055),
-            transparent 45%
+            circle at 48% 42%,
+            rgba(199,167,106,0.06),
+            transparent 46%
         );
-
-    pointer-events: none;
 }
 
 
@@ -213,7 +226,7 @@ button {
 }
 
 .loader-content {
-    width: min(360px, 80vw);
+    width: min(360px,80vw);
     text-align: center;
 }
 
@@ -225,8 +238,10 @@ button {
 
 .loader-title {
     font-family: var(--sans);
+
     font-size: 10px;
     letter-spacing: 0.42em;
+
     color: var(--white-soft);
 }
 
@@ -243,8 +258,10 @@ button {
 
 .loader-line span {
     display: block;
+
     width: 0;
     height: 100%;
+
     background: var(--gold);
 }
 
@@ -294,7 +311,7 @@ button {
 }
 
 .section-content {
-    width: min(1100px, 100%);
+    width: min(1100px,100%);
     margin: auto;
 }
 
@@ -328,7 +345,7 @@ button {
 
     font-weight: 400;
 
-    font-size: clamp(58px, 8vw, 120px);
+    font-size: clamp(58px,8vw,120px);
 
     line-height: 0.88;
 
@@ -337,7 +354,7 @@ button {
     color: var(--white);
 
     text-shadow:
-        0 3px 25px rgba(0,0,0,0.35);
+        0 3px 25px rgba(0,0,0,0.4);
 }
 
 .section-description {
@@ -346,6 +363,7 @@ button {
     margin-top: 30px;
 
     font-size: 14px;
+
     line-height: 1.8;
 
     color: var(--muted);
@@ -370,26 +388,28 @@ button {
     margin-bottom: 34px;
 }
 
+
+/*
+   EDITORIAL / LUXURY FONT
+   Similar feeling to the reference image
+*/
+
 .hero-title {
     display: flex;
     flex-direction: column;
 
     font-family: var(--serif);
 
-    /*
-       More elegant and cinematic
-       for the background image
-    */
-    font-size: clamp(82px, 14vw, 220px);
+    font-size: clamp(82px,14vw,220px);
 
     line-height: 0.72;
 
     font-weight: 400;
 
-    letter-spacing: -0.065em;
+    letter-spacing: -0.075em;
 
     text-shadow:
-        0 5px 40px rgba(0,0,0,0.55);
+        0 5px 40px rgba(0,0,0,0.65);
 }
 
 .hero-title span:nth-child(2) {
@@ -407,11 +427,11 @@ button {
 
     font-size: 11px;
 
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
 
     text-transform: uppercase;
 
-    opacity: 0.75;
+    opacity: 0.78;
 }
 
 .intro-footer {
@@ -427,6 +447,7 @@ button {
     color: var(--muted-dark);
 
     font-size: 8px;
+
     letter-spacing: 0.28em;
 }
 
@@ -452,6 +473,7 @@ button {
     color: var(--white);
 
     font-size: 9px;
+
     letter-spacing: 0.25em;
 
     overflow: hidden;
@@ -490,6 +512,10 @@ button {
     transform: translateX(0);
 }
 
+.primary-button.incomplete {
+    animation: calculateShake 0.35s ease;
+}
+
 .button-arrow {
     font-size: 15px;
 
@@ -499,10 +525,6 @@ button {
 
 .primary-button:hover .button-arrow {
     transform: translateX(5px);
-}
-
-.primary-button.incomplete {
-    animation: calculateShake 0.35s ease;
 }
 
 
@@ -525,6 +547,7 @@ button {
     color: var(--white-soft);
 
     font-size: 10px;
+
     letter-spacing: 0.2em;
 
     transition: color 0.3s ease;
@@ -569,6 +592,7 @@ button {
     margin-bottom: 18px;
 
     font-size: 17px;
+
     line-height: 1.8;
 
     color: var(--muted);
@@ -580,6 +604,7 @@ button {
     font-family: var(--serif);
 
     font-size: 32px;
+
     line-height: 1.25;
 
     color: var(--white-soft);
@@ -628,6 +653,7 @@ button {
     content: "";
 
     position: absolute;
+
     inset: 15px;
 
     border: 1px solid rgba(199,167,106,0.12);
@@ -639,6 +665,7 @@ button {
     content: "";
 
     position: absolute;
+
     inset: -20px;
 
     border: 1px solid rgba(199,167,106,0.05);
@@ -648,6 +675,7 @@ button {
 
 .orb-inner {
     color: var(--gold);
+
     font-size: 32px;
 
     animation:
@@ -660,11 +688,13 @@ button {
     color: var(--muted);
 
     font-size: 8px;
+
     letter-spacing: 0.35em;
 }
 
 .stats-container {
     width: min(550px,100%);
+
     text-align: left;
 }
 
@@ -679,6 +709,7 @@ button {
     margin-bottom: 8px;
 
     font-size: 8px;
+
     letter-spacing: 0.2em;
 
     color: var(--muted);
@@ -690,6 +721,7 @@ button {
 
 .stat-bar {
     height: 1px;
+
     background: rgba(255,255,255,0.09);
 }
 
@@ -712,6 +744,7 @@ button {
 
 .vibe-section {
     align-items: flex-start;
+
     padding-top: 150px;
 }
 
@@ -727,6 +760,7 @@ button {
     color: var(--gold);
 
     font-size: 9px;
+
     letter-spacing: 0.25em;
 
     margin-bottom: 20px;
@@ -736,6 +770,7 @@ button {
     font-family: var(--serif);
 
     font-size: 36px;
+
     font-weight: 400;
 
     margin-bottom: 30px;
@@ -763,6 +798,7 @@ button {
     color: var(--muted);
 
     font-size: 9px;
+
     letter-spacing: 0.18em;
 
     transition:
@@ -849,6 +885,7 @@ button {
     font-family: var(--serif);
 
     font-size: 25px;
+
     font-weight: 400;
 
     color: var(--muted);
@@ -1377,7 +1414,7 @@ button {
 
 
 /* =========================================================
-   MOBILE
+   MOBILE — IMPORTANT
 ========================================================= */
 
 @media (max-width: 700px) {
@@ -1390,55 +1427,70 @@ button {
         cursor: pointer;
     }
 
-    /*
+
+    /* =====================================================
        MOBILE BACKGROUND
-
-       The important change is:
-       background-size: auto 100%;
-
-       This prevents the person from being
-       aggressively cropped by cover.
-    */
+       
+       IMPORTANT:
+       The person is on the RIGHT side of the image.
+       Therefore the image is aligned toward RIGHT.
+    ===================================================== */
 
     .background {
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
 
         width: 100%;
         height: 100vh;
 
+        background-color: #080808;
+
         background-image:
             linear-gradient(
                 180deg,
-                rgba(8,8,8,0.72) 0%,
-                rgba(8,8,8,0.38) 40%,
-                rgba(8,8,8,0.60) 70%,
-                rgba(8,8,8,0.88) 100%
+                rgba(8,8,8,0.62) 0%,
+                rgba(8,8,8,0.30) 35%,
+                rgba(8,8,8,0.42) 55%,
+                rgba(8,8,8,0.78) 100%
             ),
             url("../images/background.jpg");
 
         /*
-           Keep the complete height of the image.
-           This gives the person much more visibility.
+           DO NOT USE COVER HERE.
+
+           The image keeps its height and is shifted
+           toward the right so the face appears.
         */
+
         background-size:
             auto 100%;
 
         /*
-           Adjust this value if the person is
-           slightly left/right.
+           RIGHT ALIGNMENT
+
+           100% = far right
+           This exposes the right side of the image.
         */
+
         background-position:
-            58% center;
+            100% center;
 
         background-repeat: no-repeat;
 
-        background-color: #080808;
+        background-attachment: scroll;
     }
 
+
+    /* =====================================================
+       SECTIONS
+    ===================================================== */
 
     .section {
         padding: 100px 7vw;
     }
-
 
     .section-number {
         left: 7vw;
@@ -1446,44 +1498,63 @@ button {
     }
 
 
-    /* HERO FONT */
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     .hero-title {
-        font-size: clamp(72px, 22vw, 125px);
 
-        line-height: 0.74;
+        /*
+           Elegant editorial / luxury typography
+        */
 
-        letter-spacing: -0.065em;
+        font-family: var(--serif);
+
+        font-size: clamp(70px,21vw,125px);
+
+        line-height: 0.73;
+
+        letter-spacing: -0.07em;
+
+        font-weight: 400;
 
         text-shadow:
-            0 4px 30px rgba(0,0,0,0.7);
+            0 4px 35px rgba(0,0,0,0.75);
     }
 
     .hero-title span:nth-child(2) {
-        padding-left: 0.25em;
+        padding-left: 0.22em;
+    }
+
+    .hero-title span:nth-child(3) {
+        color: var(--gold-light);
     }
 
     .hero-description {
+
         margin-top: 45px;
 
         font-size: 8px;
 
-        letter-spacing: 0.13em;
+        letter-spacing: 0.15em;
 
         max-width: 280px;
 
-        line-height: 1.8;
+        line-height: 1.9;
     }
 
 
-    /* SECTION TITLES */
+    /* =====================================================
+       SECTION TITLES
+    ===================================================== */
 
     .section-title {
-        font-size: clamp(52px, 15vw, 82px);
+        font-size: clamp(52px,15vw,82px);
 
         line-height: 0.9;
-    }
 
+        letter-spacing: -0.05em;
+    }
 
     .section-description {
         font-size: 13px;
@@ -1492,7 +1563,9 @@ button {
     }
 
 
-    /* STORY */
+    /* =====================================================
+       STORY
+    ===================================================== */
 
     .story-text {
         margin-top: 35px;
@@ -1507,14 +1580,18 @@ button {
     }
 
 
-    /* CHOICES */
+    /* =====================================================
+       CHOICES
+    ===================================================== */
 
     .choice-grid {
         grid-template-columns: 1fr;
     }
 
 
-    /* DETAIL CARDS */
+    /* =====================================================
+       DETAIL CARDS
+    ===================================================== */
 
     .detail-cards {
         grid-template-columns: 1fr;
@@ -1525,7 +1602,9 @@ button {
     }
 
 
-    /* EFFORT */
+    /* =====================================================
+       EFFORT
+    ===================================================== */
 
     .effort-grid {
         grid-template-columns: repeat(2,1fr);
@@ -1544,7 +1623,9 @@ button {
     }
 
 
-    /* FINALE */
+    /* =====================================================
+       FINALE
+    ===================================================== */
 
     .finale-title {
         font-size: clamp(75px,20vw,120px);
@@ -1559,21 +1640,27 @@ button {
     }
 
 
-    /* HIDE DESKTOP CURSOR */
+    /* =====================================================
+       CURSOR
+    ===================================================== */
 
     .cursor {
         display: none;
     }
 
 
-    /* PROGRESS */
+    /* =====================================================
+       PROGRESS
+    ===================================================== */
 
     .section-progress {
         right: 14px;
     }
 
 
-    /* SOUND */
+    /* =====================================================
+       SOUND
+    ===================================================== */
 
     .sound-toggle {
         left: 18px;
@@ -1581,7 +1668,9 @@ button {
     }
 
 
-    /* SECRET */
+    /* =====================================================
+       SECRET
+    ===================================================== */
 
     .secret-star {
         right: 18px;
@@ -1597,7 +1686,7 @@ button {
 @media (max-width: 400px) {
 
     .hero-title {
-        font-size: 68px;
+        font-size: 67px;
     }
 
     .section {
@@ -1605,13 +1694,19 @@ button {
         padding-right: 6vw;
     }
 
+
     /*
-       Slightly more right-focused on
-       narrow screens to keep the person visible.
+       Still keep image on the RIGHT.
+       This is the important part.
     */
 
     .background {
-        background-position: 60% center;
+
+        background-size:
+            auto 100%;
+
+        background-position:
+            100% center;
     }
 
     .intro-footer {
@@ -1619,30 +1714,35 @@ button {
         right: 6vw;
     }
 }
-/* =================================================
-   MOBILE BACKGROUND — SHOW FULL FACE
-================================================= */
 
-@media (max-width: 700px) {
+
+/* =========================================================
+   EXTRA NARROW PHONES
+   360px / 375px screens
+========================================================= */
+
+@media (max-width: 380px) {
 
     .background {
-        background-image:
-            linear-gradient(
-                180deg,
-                rgba(8, 8, 8, 0.72) 0%,
-                rgba(8, 8, 8, 0.42) 45%,
-                rgba(8, 8, 8, 0.78) 100%
-            ),
-            url("../images/background.jpg");
 
-        background-size: cover;
+        /*
+           Slightly reduce image height so more
+           horizontal area becomes visible.
+        */
 
-        /* Move image LEFT so the person's face comes into view */
-        background-position: 50% center;
+        background-size:
+            auto 94%;
 
-        background-repeat: no-repeat;
-
-        background-attachment: scroll;
+        background-position:
+            100% center;
     }
 
+    .hero-title {
+        font-size: 63px;
+    }
+
+    .hero-description {
+        font-size: 7px;
+        max-width: 250px;
+    }
 }
