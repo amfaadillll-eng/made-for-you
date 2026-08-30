@@ -1382,7 +1382,7 @@ button {
 
 
 /* =========================================================
-   MOBILE — 30% RIGHT POSITION
+   MOBILE — 60% RIGHT POSITION
 ========================================================= */
 
 @media screen and (max-width: 700px) {
@@ -1428,26 +1428,20 @@ button {
             ),
             url("../images/background.jpg") !important;
 
-        /*
-         * Keep the image height exactly equal
-         * to the phone height.
-         *
-         * This prevents the face from becoming
-         * cropped vertically.
-         */
         background-size:
             auto 100vh !important;
 
         /*
-         * 30% TO THE RIGHT
+         * 60% TO THE RIGHT
          *
-         * 50% = center
-         * 80% = 30% more toward the RIGHT
+         * Previous: 80%
+         * Now:      110%
          *
-         * This moves the person's face into view.
+         * This moves the image another 30%
+         * toward the RIGHT.
          */
         background-position:
-            80% center !important;
+            110% center !important;
 
         background-repeat:
             no-repeat !important;
@@ -1651,8 +1645,7 @@ button {
     }
 
     /*
-     * SAME 30% RIGHT POSITION
-     * Even on narrow phones.
+     * SAME 60% RIGHT POSITION
      */
     .background {
 
@@ -1660,7 +1653,7 @@ button {
             auto 100vh !important;
 
         background-position:
-            80% center !important;
+            110% center !important;
     }
 
     .intro-footer {
