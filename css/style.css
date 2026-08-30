@@ -1,12 +1,6 @@
 /* =========================================================
    MADE FOR YOU
-   PREMIUM CINEMATIC VISUAL SYSTEM
-   MOBILE FACE-FRIENDLY VERSION
-========================================================= */
-
-
-/* =========================================================
-   ROOT
+   PREMIUM DARK / CINEMATIC VISUAL SYSTEM
 ========================================================= */
 
 :root {
@@ -24,11 +18,10 @@
     --gold-light: #e2c98f;
     --gold-dark: #806536;
 
-    --border: rgba(199,167,106,0.20);
-    --border-soft: rgba(255,255,255,0.08);
+    --border: rgba(199, 167, 106, 0.20);
+    --border-soft: rgba(255, 255, 255, 0.08);
 
-    /* Elegant editorial font */
-    --serif: "Cormorant Garamond", "Bodoni 72", "Didot", Georgia, serif;
+    --serif: "Cormorant Garamond", Georgia, serif;
     --sans: "Inter", Arial, sans-serif;
 
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -98,10 +91,8 @@ button {
     position: absolute;
     width: 34px;
     height: 34px;
-
     border: 1px solid rgba(199,167,106,0.55);
     border-radius: 50%;
-
     transform: translate(-50%, -50%);
 
     transition:
@@ -112,14 +103,16 @@ button {
 
 
 /* =========================================================
-   BACKGROUND
+   CINEMATIC BACKGROUND
 ========================================================= */
 
 .background {
     position: fixed;
-    inset: 0;
 
-    width: 100%;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
     height: 100vh;
 
     z-index: -5;
@@ -132,9 +125,9 @@ button {
         linear-gradient(
             90deg,
             rgba(8,8,8,0.94) 0%,
-            rgba(8,8,8,0.78) 28%,
-            rgba(8,8,8,0.45) 62%,
-            rgba(8,8,8,0.48) 100%
+            rgba(8,8,8,0.78) 30%,
+            rgba(8,8,8,0.42) 65%,
+            rgba(8,8,8,0.52) 100%
         ),
         url("../images/background.jpg");
 
@@ -144,9 +137,7 @@ button {
 }
 
 
-/* =========================================================
-   CINEMATIC LIGHT
-========================================================= */
+/* cinematic glow */
 
 .background::after {
     content: "";
@@ -154,14 +145,14 @@ button {
     position: absolute;
     inset: 0;
 
-    pointer-events: none;
-
     background:
         radial-gradient(
-            circle at 48% 42%,
-            rgba(199,167,106,0.06),
-            transparent 46%
+            circle at 50% 45%,
+            rgba(199,167,106,0.045),
+            transparent 50%
         );
+
+    pointer-events: none;
 }
 
 
@@ -226,7 +217,7 @@ button {
 }
 
 .loader-content {
-    width: min(360px,80vw);
+    width: min(360px, 80vw);
     text-align: center;
 }
 
@@ -238,10 +229,8 @@ button {
 
 .loader-title {
     font-family: var(--sans);
-
     font-size: 10px;
     letter-spacing: 0.42em;
-
     color: var(--white-soft);
 }
 
@@ -258,10 +247,8 @@ button {
 
 .loader-line span {
     display: block;
-
     width: 0;
     height: 100%;
-
     background: var(--gold);
 }
 
@@ -288,6 +275,7 @@ button {
 #main-content {
     position: relative;
     width: 100%;
+    z-index: 1;
 }
 
 
@@ -311,7 +299,7 @@ button {
 }
 
 .section-content {
-    width: min(1100px,100%);
+    width: min(1100px, 100%);
     margin: auto;
 }
 
@@ -345,7 +333,7 @@ button {
 
     font-weight: 400;
 
-    font-size: clamp(58px,8vw,120px);
+    font-size: clamp(58px, 8vw, 120px);
 
     line-height: 0.88;
 
@@ -354,7 +342,7 @@ button {
     color: var(--white);
 
     text-shadow:
-        0 3px 25px rgba(0,0,0,0.4);
+        0 3px 25px rgba(0,0,0,0.35);
 }
 
 .section-description {
@@ -363,7 +351,6 @@ button {
     margin-top: 30px;
 
     font-size: 14px;
-
     line-height: 1.8;
 
     color: var(--muted);
@@ -390,26 +377,27 @@ button {
 
 
 /*
-   EDITORIAL / LUXURY FONT
-   Similar feeling to the reference image
+   CORMORANT GARAMOND
+   Matches the elegant editorial style
+   of the background image.
 */
 
 .hero-title {
     display: flex;
     flex-direction: column;
 
-    font-family: var(--serif);
+    font-family: "Cormorant Garamond", Georgia, serif;
 
-    font-size: clamp(82px,14vw,220px);
+    font-size: clamp(82px, 14vw, 220px);
 
     line-height: 0.72;
 
     font-weight: 400;
 
-    letter-spacing: -0.075em;
+    letter-spacing: -0.065em;
 
     text-shadow:
-        0 5px 40px rgba(0,0,0,0.65);
+        0 5px 40px rgba(0,0,0,0.60);
 }
 
 .hero-title span:nth-child(2) {
@@ -427,7 +415,7 @@ button {
 
     font-size: 11px;
 
-    letter-spacing: 0.18em;
+    letter-spacing: 0.15em;
 
     text-transform: uppercase;
 
@@ -447,7 +435,6 @@ button {
     color: var(--muted-dark);
 
     font-size: 8px;
-
     letter-spacing: 0.28em;
 }
 
@@ -473,7 +460,6 @@ button {
     color: var(--white);
 
     font-size: 9px;
-
     letter-spacing: 0.25em;
 
     overflow: hidden;
@@ -547,7 +533,6 @@ button {
     color: var(--white-soft);
 
     font-size: 10px;
-
     letter-spacing: 0.2em;
 
     transition: color 0.3s ease;
@@ -592,7 +577,6 @@ button {
     margin-bottom: 18px;
 
     font-size: 17px;
-
     line-height: 1.8;
 
     color: var(--muted);
@@ -604,7 +588,6 @@ button {
     font-family: var(--serif);
 
     font-size: 32px;
-
     line-height: 1.25;
 
     color: var(--white-soft);
@@ -653,7 +636,6 @@ button {
     content: "";
 
     position: absolute;
-
     inset: 15px;
 
     border: 1px solid rgba(199,167,106,0.12);
@@ -665,7 +647,6 @@ button {
     content: "";
 
     position: absolute;
-
     inset: -20px;
 
     border: 1px solid rgba(199,167,106,0.05);
@@ -675,7 +656,6 @@ button {
 
 .orb-inner {
     color: var(--gold);
-
     font-size: 32px;
 
     animation:
@@ -688,13 +668,11 @@ button {
     color: var(--muted);
 
     font-size: 8px;
-
     letter-spacing: 0.35em;
 }
 
 .stats-container {
     width: min(550px,100%);
-
     text-align: left;
 }
 
@@ -709,7 +687,6 @@ button {
     margin-bottom: 8px;
 
     font-size: 8px;
-
     letter-spacing: 0.2em;
 
     color: var(--muted);
@@ -721,7 +698,6 @@ button {
 
 .stat-bar {
     height: 1px;
-
     background: rgba(255,255,255,0.09);
 }
 
@@ -744,7 +720,6 @@ button {
 
 .vibe-section {
     align-items: flex-start;
-
     padding-top: 150px;
 }
 
@@ -760,7 +735,6 @@ button {
     color: var(--gold);
 
     font-size: 9px;
-
     letter-spacing: 0.25em;
 
     margin-bottom: 20px;
@@ -770,7 +744,6 @@ button {
     font-family: var(--serif);
 
     font-size: 36px;
-
     font-weight: 400;
 
     margin-bottom: 30px;
@@ -798,7 +771,6 @@ button {
     color: var(--muted);
 
     font-size: 9px;
-
     letter-spacing: 0.18em;
 
     transition:
@@ -885,7 +857,6 @@ button {
     font-family: var(--serif);
 
     font-size: 25px;
-
     font-weight: 400;
 
     color: var(--muted);
@@ -1414,10 +1385,10 @@ button {
 
 
 /* =========================================================
-   MOBILE — IMPORTANT
+   MOBILE — FACE VISIBILITY FIX
 ========================================================= */
 
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
 
     body {
         cursor: auto;
@@ -1427,74 +1398,67 @@ button {
         cursor: pointer;
     }
 
+    .cursor {
+        display: none;
+    }
+
 
     /* =====================================================
        MOBILE BACKGROUND
-       
-       IMPORTANT:
-       The person is on the RIGHT side of the image.
-       Therefore the image is aligned toward RIGHT.
+
+       The original image has the person on the RIGHT.
+
+       Instead of "cover", we preserve the image height
+       and anchor its RIGHT side to the phone.
+
+       This prevents the face from being cropped away.
     ===================================================== */
 
     .background {
 
-        position: fixed;
+        position: fixed !important;
 
-        top: 0;
-        left: 0;
+        top: 0 !important;
+        left: 0 !important;
 
-        width: 100%;
-        height: 100vh;
+        width: 100vw !important;
+        height: 100vh !important;
 
-        background-color: #080808;
+        background-color: #080808 !important;
 
         background-image:
             linear-gradient(
                 180deg,
-                rgba(8,8,8,0.62) 0%,
-                rgba(8,8,8,0.30) 35%,
-                rgba(8,8,8,0.42) 55%,
+                rgba(8,8,8,0.55) 0%,
+                rgba(8,8,8,0.25) 32%,
+                rgba(8,8,8,0.38) 58%,
                 rgba(8,8,8,0.78) 100%
             ),
-            url("../images/background.jpg");
+            url("../images/background.jpg") !important;
 
         /*
-           DO NOT USE COVER HERE.
-
-           The image keeps its height and is shifted
-           toward the right so the face appears.
-        */
-
+         * IMPORTANT:
+         * Image height follows the phone height.
+         * This prevents "cover" from zooming/cropping
+         * the woman's face.
+         */
         background-size:
-            auto 100%;
+            auto 100vh !important;
 
         /*
-           RIGHT ALIGNMENT
-
-           100% = far right
-           This exposes the right side of the image.
-        */
-
+         * RIGHT EDGE OF IMAGE = RIGHT EDGE OF PHONE
+         *
+         * This shifts the composition left and exposes
+         * the person's face.
+         */
         background-position:
-            100% center;
+            right center !important;
 
-        background-repeat: no-repeat;
+        background-repeat:
+            no-repeat !important;
 
-        background-attachment: scroll;
-    }
-
-
-    /* =====================================================
-       SECTIONS
-    ===================================================== */
-
-    .section {
-        padding: 100px 7vw;
-    }
-
-    .section-number {
-        left: 7vw;
-        top: 30px;
+        background-attachment:
+            scroll !important;
     }
 
 
@@ -1504,61 +1468,65 @@ button {
 
     .hero-title {
 
-        /*
-           Elegant editorial / luxury typography
-        */
+        font-family:
+            "Cormorant Garamond",
+            Georgia,
+            serif;
 
-        font-family: var(--serif);
+        font-size:
+            clamp(72px, 20vw, 125px);
 
-        font-size: clamp(70px,21vw,125px);
+        line-height:
+            0.74;
 
-        line-height: 0.73;
-
-        letter-spacing: -0.07em;
-
-        font-weight: 400;
+        letter-spacing:
+            -0.065em;
 
         text-shadow:
-            0 4px 35px rgba(0,0,0,0.75);
+            0 4px 30px rgba(0,0,0,0.75);
     }
 
     .hero-title span:nth-child(2) {
-        padding-left: 0.22em;
-    }
-
-    .hero-title span:nth-child(3) {
-        color: var(--gold-light);
+        padding-left: 0.20em;
     }
 
     .hero-description {
-
         margin-top: 45px;
 
         font-size: 8px;
 
-        letter-spacing: 0.15em;
+        letter-spacing: 0.13em;
 
         max-width: 280px;
 
-        line-height: 1.9;
+        line-height: 1.8;
     }
 
 
     /* =====================================================
-       SECTION TITLES
+       SECTIONS
     ===================================================== */
 
+    .section {
+        padding:
+            100px 7vw;
+    }
+
+    .section-number {
+        left: 7vw;
+        top: 30px;
+    }
+
     .section-title {
-        font-size: clamp(52px,15vw,82px);
+        font-size:
+            clamp(52px, 15vw, 82px);
 
-        line-height: 0.9;
-
-        letter-spacing: -0.05em;
+        line-height:
+            0.9;
     }
 
     .section-description {
         font-size: 13px;
-
         line-height: 1.75;
     }
 
@@ -1607,11 +1575,13 @@ button {
     ===================================================== */
 
     .effort-grid {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .effort-item {
-        border-bottom: 1px solid var(--border-soft);
+        border-bottom:
+            1px solid var(--border-soft);
     }
 
     .effort-item:nth-child(2) {
@@ -1628,7 +1598,8 @@ button {
     ===================================================== */
 
     .finale-title {
-        font-size: clamp(75px,20vw,120px);
+        font-size:
+            clamp(75px,20vw,120px);
     }
 
     .finale-small {
@@ -1637,15 +1608,6 @@ button {
 
     .final-statement {
         font-size: 23px;
-    }
-
-
-    /* =====================================================
-       CURSOR
-    ===================================================== */
-
-    .cursor {
-        display: none;
     }
 
 
@@ -1683,10 +1645,10 @@ button {
    VERY SMALL PHONES
 ========================================================= */
 
-@media (max-width: 400px) {
+@media screen and (max-width: 400px) {
 
     .hero-title {
-        font-size: 67px;
+        font-size: 68px;
     }
 
     .section {
@@ -1694,55 +1656,21 @@ button {
         padding-right: 6vw;
     }
 
-
     /*
-       Still keep image on the RIGHT.
-       This is the important part.
-    */
-
+     * Keep RIGHT side of image visible.
+     * Do NOT use center here.
+     */
     .background {
 
         background-size:
-            auto 100%;
+            auto 100vh !important;
 
         background-position:
-            100% center;
+            right center !important;
     }
 
     .intro-footer {
         left: 6vw;
         right: 6vw;
-    }
-}
-
-
-/* =========================================================
-   EXTRA NARROW PHONES
-   360px / 375px screens
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .background {
-
-        /*
-           Slightly reduce image height so more
-           horizontal area becomes visible.
-        */
-
-        background-size:
-            auto 94%;
-
-        background-position:
-            100% center;
-    }
-
-    .hero-title {
-        font-size: 63px;
-    }
-
-    .hero-description {
-        font-size: 7px;
-        max-width: 250px;
     }
 }
