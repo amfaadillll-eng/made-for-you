@@ -1638,7 +1638,7 @@ button {
         background-size: cover;
 
         /* Move image LEFT so the person's face comes into view */
-        background-position: 100% center;
+        background-position: 90% center;
 
         background-repeat: no-repeat;
 
