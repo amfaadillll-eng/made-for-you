@@ -1,11 +1,6 @@
 /* =========================================================
    MADE FOR YOU
-   PREMIUM VISUAL SYSTEM
-   CLEAN FINAL VERSION
-========================================================= */
-
-/* =========================================================
-   ROOT
+   PREMIUM DARK / CINEMATIC VISUAL SYSTEM
 ========================================================= */
 
 :root {
@@ -23,12 +18,11 @@
     --gold-light: #e2c98f;
     --gold-dark: #806536;
 
-    --border: rgba(199, 167, 106, 0.22);
-    --border-soft: rgba(255, 255, 255, 0.08);
+    --border: rgba(199, 167, 106, 0.20);
+    --border-soft: rgba(255,255,255,0.08);
 
-    /* Elegant editorial typography */
-    --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
-    --sans: "Inter", "Montserrat", Arial, sans-serif;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter", Arial, sans-serif;
 
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -72,11 +66,6 @@ button {
     cursor: none;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
 
 /* =========================================================
    CUSTOM CURSOR
@@ -102,9 +91,10 @@ a {
     position: absolute;
     width: 34px;
     height: 34px;
-    border: 1px solid rgba(199, 167, 106, 0.55);
+    border: 1px solid rgba(199,167,106,0.55);
     border-radius: 50%;
     transform: translate(-50%, -50%);
+
     transition:
         width 0.3s var(--ease),
         height 0.3s var(--ease),
@@ -114,18 +104,15 @@ a {
 
 /* =========================================================
    BACKGROUND
-   IMPORTANT:
-   Keep only ONE final background definition.
 ========================================================= */
 
 .background {
     position: fixed;
     inset: 0;
+    z-index: -5;
 
     width: 100%;
-    height: 100%;
-
-    z-index: -10;
+    height: 100vh;
 
     overflow: hidden;
 
@@ -134,23 +121,20 @@ a {
     background-image:
         linear-gradient(
             90deg,
-            rgba(8, 8, 8, 0.93) 0%,
-            rgba(8, 8, 8, 0.72) 32%,
-            rgba(8, 8, 8, 0.30) 65%,
-            rgba(8, 8, 8, 0.55) 100%
+            rgba(8,8,8,0.94) 0%,
+            rgba(8,8,8,0.78) 30%,
+            rgba(8,8,8,0.45) 60%,
+            rgba(8,8,8,0.60) 100%
         ),
         url("../images/background.jpg");
 
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-
-    pointer-events: none;
 }
 
-/*
-   Soft cinematic glow over image
-*/
+
+/* subtle cinematic glow */
 
 .background::after {
     content: "";
@@ -160,37 +144,9 @@ a {
     background:
         radial-gradient(
             circle at 50% 45%,
-            rgba(199, 167, 106, 0.055),
+            rgba(199,167,106,0.055),
             transparent 45%
         );
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   BACKGROUND GLOW
-========================================================= */
-
-.background-glow {
-    position: absolute;
-
-    width: 650px;
-    height: 650px;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(199, 167, 106, 0.055),
-            transparent 68%
-        );
-
-    filter: blur(20px);
 
     pointer-events: none;
 }
@@ -232,6 +188,7 @@ a {
     height: 2px;
 
     background: var(--gold);
+
     border-radius: 50%;
 
     opacity: 0.18;
@@ -253,15 +210,6 @@ a {
     justify-content: center;
 
     background: #080808;
-}
-
-.loader-hidden {
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
 }
 
 .loader-content {
@@ -295,10 +243,8 @@ a {
 
 .loader-line span {
     display: block;
-
     width: 0;
     height: 100%;
-
     background: var(--gold);
 }
 
@@ -306,6 +252,15 @@ a {
     font-size: 9px;
     letter-spacing: 0.2em;
     color: var(--muted);
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
 }
 
 
@@ -316,7 +271,6 @@ a {
 #main-content {
     position: relative;
     width: 100%;
-    background: transparent;
 }
 
 
@@ -383,7 +337,7 @@ a {
     color: var(--white);
 
     text-shadow:
-        0 2px 25px rgba(0,0,0,0.25);
+        0 3px 25px rgba(0,0,0,0.35);
 }
 
 .section-description {
@@ -399,7 +353,7 @@ a {
 
 
 /* =========================================================
-   INTRO
+   INTRO / HERO
 ========================================================= */
 
 .intro-section {
@@ -422,20 +376,24 @@ a {
 
     font-family: var(--serif);
 
-    font-size: clamp(100px, 17vw, 260px);
+    /*
+       More elegant and cinematic
+       for the background image
+    */
+    font-size: clamp(82px, 14vw, 220px);
 
     line-height: 0.72;
 
     font-weight: 400;
 
-    letter-spacing: -0.075em;
+    letter-spacing: -0.065em;
 
     text-shadow:
-        0 5px 40px rgba(0,0,0,0.35);
+        0 5px 40px rgba(0,0,0,0.55);
 }
 
 .hero-title span:nth-child(2) {
-    padding-left: 0.55em;
+    padding-left: 0.48em;
 }
 
 .hero-title span:nth-child(3) {
@@ -445,10 +403,15 @@ a {
 .hero-description {
     margin-top: 60px;
 
-    color: var(--muted);
+    color: var(--white-soft);
 
-    font-size: 12px;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+    opacity: 0.75;
 }
 
 .intro-footer {
@@ -509,7 +472,8 @@ a {
 
     background: var(--gold);
 
-    transition: transform 0.55s var(--ease);
+    transition:
+        transform 0.55s var(--ease);
 
     z-index: -1;
 }
@@ -526,10 +490,6 @@ a {
     transform: translateX(0);
 }
 
-.primary-button.incomplete {
-    animation: calculateShake 0.35s ease;
-}
-
 .button-arrow {
     font-size: 15px;
 
@@ -540,6 +500,15 @@ a {
 .primary-button:hover .button-arrow {
     transform: translateX(5px);
 }
+
+.primary-button.incomplete {
+    animation: calculateShake 0.35s ease;
+}
+
+
+/* =========================================================
+   TEXT BUTTON
+========================================================= */
 
 .text-button {
     display: inline-flex;
@@ -652,7 +621,7 @@ a {
     border-radius: 50%;
 
     box-shadow:
-        0 0 80px rgba(199, 167, 106, 0.06);
+        0 0 80px rgba(199,167,106,0.06);
 }
 
 .character-orb::before {
@@ -679,7 +648,6 @@ a {
 
 .orb-inner {
     color: var(--gold);
-
     font-size: 32px;
 
     animation:
@@ -696,7 +664,7 @@ a {
 }
 
 .stats-container {
-    width: min(550px, 100%);
+    width: min(550px,100%);
     text-align: left;
 }
 
@@ -722,7 +690,6 @@ a {
 
 .stat-bar {
     height: 1px;
-
     background: rgba(255,255,255,0.09);
 }
 
@@ -777,7 +744,7 @@ a {
 .choice-grid {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
 
     gap: 10px;
 }
@@ -819,8 +786,7 @@ a {
 
     border-color: var(--gold) !important;
 
-    background:
-        rgba(199,167,106,0.05) !important;
+    background: rgba(199,167,106,0.05) !important;
 }
 
 
@@ -833,7 +799,7 @@ a {
 }
 
 .algorithm-content {
-    width: min(850px, 100%);
+    width: min(850px,100%);
 }
 
 .analysis-screen {
@@ -848,6 +814,7 @@ a {
     margin-top: 34px;
 
     font-size: 9px;
+
     letter-spacing: 0.2em;
 
     color: var(--muted);
@@ -892,7 +859,7 @@ a {
 
     font-family: var(--serif);
 
-    font-size: clamp(70px, 10vw, 150px);
+    font-size: clamp(70px,10vw,150px);
 
     line-height: 0.8;
 
@@ -915,7 +882,7 @@ a {
 .detail-cards {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
 
     gap: 1px;
 
@@ -929,7 +896,7 @@ a {
 
     padding: 38px;
 
-    background: rgba(8,8,8,0.88);
+    background: var(--black);
 
     transition:
         background 0.5s ease,
@@ -946,6 +913,7 @@ a {
     color: var(--gold);
 
     font-size: 9px;
+
     letter-spacing: 0.2em;
 }
 
@@ -955,6 +923,7 @@ a {
     font-family: var(--serif);
 
     font-size: 42px;
+
     font-weight: 400;
 }
 
@@ -966,6 +935,7 @@ a {
     color: var(--muted);
 
     font-size: 12px;
+
     line-height: 1.8;
 }
 
@@ -980,7 +950,9 @@ a {
 
 .effort-section .section-content {
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 }
 
@@ -1001,9 +973,10 @@ a {
 
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
 
     border-top: 1px solid var(--border-soft);
+
     border-bottom: 1px solid var(--border-soft);
 }
 
@@ -1035,6 +1008,7 @@ a {
     color: var(--muted);
 
     font-size: 7px;
+
     letter-spacing: 0.22em;
 }
 
@@ -1054,6 +1028,7 @@ a {
     font-family: var(--serif);
 
     font-size: 45px;
+
     font-weight: 400;
 
     color: var(--gold-light);
@@ -1072,7 +1047,9 @@ a {
 
 .finale-content {
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 }
 
@@ -1082,6 +1059,7 @@ a {
     font-family: var(--serif);
 
     font-size: 40px;
+
     font-weight: 400;
 
     color: var(--muted);
@@ -1092,7 +1070,7 @@ a {
 
     font-family: var(--serif);
 
-    font-size: clamp(90px, 16vw, 230px);
+    font-size: clamp(90px,16vw,230px);
 
     line-height: 0.8;
 
@@ -1168,6 +1146,7 @@ a {
     z-index: 100;
 
     display: flex;
+
     align-items: center;
 
     gap: 10px;
@@ -1175,6 +1154,7 @@ a {
     color: var(--muted-dark);
 
     font-size: 8px;
+
     letter-spacing: 0.15em;
 
     writing-mode: vertical-rl;
@@ -1186,6 +1166,7 @@ a {
 
 .progress-line {
     width: 1px;
+
     height: 45px;
 
     background: var(--border);
@@ -1205,6 +1186,7 @@ a {
     z-index: 100;
 
     display: flex;
+
     align-items: center;
 
     gap: 10px;
@@ -1212,6 +1194,7 @@ a {
     color: var(--muted);
 
     font-size: 8px;
+
     letter-spacing: 0.18em;
 }
 
@@ -1247,7 +1230,8 @@ a {
     opacity: 1;
 
     transform:
-        rotate(90deg) scale(1.2);
+        rotate(90deg)
+        scale(1.2);
 }
 
 
@@ -1266,8 +1250,7 @@ a {
     align-items: center;
     justify-content: center;
 
-    background:
-        rgba(8,8,8,0.97);
+    background: rgba(8,8,8,0.97);
 }
 
 .secret-content {
@@ -1288,6 +1271,7 @@ a {
     font-family: var(--serif);
 
     font-size: 80px;
+
     font-weight: 400;
 }
 
@@ -1328,7 +1312,7 @@ a {
 
 
 /* =========================================================
-   KEYFRAMES
+   ANIMATIONS
 ========================================================= */
 
 @keyframes orbPulse {
@@ -1348,23 +1332,23 @@ a {
 @keyframes grainMove {
 
     0% {
-        transform: translate(0, 0);
+        transform: translate(0,0);
     }
 
     25% {
-        transform: translate(3%, -2%);
+        transform: translate(3%,-2%);
     }
 
     50% {
-        transform: translate(-2%, 3%);
+        transform: translate(-2%,3%);
     }
 
     75% {
-        transform: translate(2%, 2%);
+        transform: translate(2%,2%);
     }
 
     100% {
-        transform: translate(-3%, -3%);
+        transform: translate(-3%,-3%);
     }
 }
 
@@ -1402,157 +1386,236 @@ a {
         cursor: auto;
     }
 
-    button,
-    a {
+    button {
         cursor: pointer;
-    }
-
-    .cursor {
-        display: none;
     }
 
     /*
        MOBILE BACKGROUND
+
+       The important change is:
+       background-size: auto 100%;
+
+       This prevents the person from being
+       aggressively cropped by cover.
     */
 
     .background {
+
+        width: 100%;
+        height: 100vh;
+
         background-image:
             linear-gradient(
                 180deg,
-                rgba(8, 8, 8, 0.78) 0%,
-                rgba(8, 8, 8, 0.42) 45%,
-                rgba(8, 8, 8, 0.88) 100%
+                rgba(8,8,8,0.72) 0%,
+                rgba(8,8,8,0.38) 40%,
+                rgba(8,8,8,0.60) 70%,
+                rgba(8,8,8,0.88) 100%
             ),
             url("../images/background.jpg");
 
-        background-size: cover;
+        /*
+           Keep the complete height of the image.
+           This gives the person much more visibility.
+        */
+        background-size:
+            auto 100%;
 
-        background-position: 68% center;
+        /*
+           Adjust this value if the person is
+           slightly left/right.
+        */
+        background-position:
+            58% center;
 
         background-repeat: no-repeat;
 
-        background-attachment: scroll;
+        background-color: #080808;
     }
+
 
     .section {
         padding: 100px 7vw;
     }
+
 
     .section-number {
         left: 7vw;
         top: 30px;
     }
 
+
+    /* HERO FONT */
+
     .hero-title {
-        font-size: clamp(70px, 22vw, 130px);
+        font-size: clamp(72px, 22vw, 125px);
+
+        line-height: 0.74;
+
+        letter-spacing: -0.065em;
+
+        text-shadow:
+            0 4px 30px rgba(0,0,0,0.7);
+    }
+
+    .hero-title span:nth-child(2) {
+        padding-left: 0.25em;
     }
 
     .hero-description {
-        margin-top: 40px;
-        font-size: 10px;
+        margin-top: 45px;
+
+        font-size: 8px;
+
+        letter-spacing: 0.13em;
+
+        max-width: 280px;
+
+        line-height: 1.8;
     }
 
-    .intro-footer {
-        left: 7vw;
-        right: 7vw;
-        bottom: 28px;
+
+    /* SECTION TITLES */
+
+    .section-title {
+        font-size: clamp(52px, 15vw, 82px);
+
+        line-height: 0.9;
     }
 
-    .section-progress {
-        display: none;
+
+    .section-description {
+        font-size: 13px;
+
+        line-height: 1.75;
     }
 
-    .sound-toggle {
-        left: 20px;
-        bottom: 20px;
-    }
 
-    .secret-star {
-        right: 20px;
-        bottom: 20px;
-    }
+    /* STORY */
 
-    .choice-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .detail-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .effort-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .effort-item:nth-child(2) {
-        border-right: none;
-    }
-
-    .effort-item:nth-child(1),
-    .effort-item:nth-child(2) {
-        border-bottom: 1px solid var(--border-soft);
+    .story-text {
+        margin-top: 35px;
     }
 
     .story-text p {
         font-size: 15px;
     }
 
-    .finale-title {
-        font-size: clamp(70px, 22vw, 130px);
+    .story-text .highlight-text {
+        font-size: 27px;
     }
 
-    .secret-content h2 {
-        font-size: 55px;
+
+    /* CHOICES */
+
+    .choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* DETAIL CARDS */
+
+    .detail-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-card {
+        min-height: 230px;
+    }
+
+
+    /* EFFORT */
+
+    .effort-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .effort-item {
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .effort-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .effort-value {
+        font-size: 48px;
+    }
+
+
+    /* FINALE */
+
+    .finale-title {
+        font-size: clamp(75px,20vw,120px);
+    }
+
+    .finale-small {
+        font-size: 30px;
+    }
+
+    .final-statement {
+        font-size: 23px;
+    }
+
+
+    /* HIDE DESKTOP CURSOR */
+
+    .cursor {
+        display: none;
+    }
+
+
+    /* PROGRESS */
+
+    .section-progress {
+        right: 14px;
+    }
+
+
+    /* SOUND */
+
+    .sound-toggle {
+        left: 18px;
+        bottom: 20px;
+    }
+
+
+    /* SECRET */
+
+    .secret-star {
+        right: 18px;
+        bottom: 20px;
     }
 }
 
 
 /* =========================================================
-   SMALL PHONES
+   VERY SMALL PHONES
 ========================================================= */
 
-@media (max-width: 420px) {
+@media (max-width: 400px) {
+
+    .hero-title {
+        font-size: 68px;
+    }
 
     .section {
         padding-left: 6vw;
         padding-right: 6vw;
     }
 
-    .hero-title {
-        font-size: 22vw;
+    /*
+       Slightly more right-focused on
+       narrow screens to keep the person visible.
+    */
+
+    .background {
+        background-position: 60% center;
     }
 
-    .section-title {
-        font-size: 58px;
+    .intro-footer {
+        left: 6vw;
+        right: 6vw;
     }
-
-    .question h3 {
-        font-size: 30px;
-    }
-
-    .answer {
-        font-size: 55px;
-    }
-
-    .effort-value {
-        font-size: 45px;
-    }
-
-    .detail-card h3 {
-        font-size: 36px;
-    }
-}
-
-
-/* =========================================================
-   FINAL DARK SAFETY
-========================================================= */
-
-html,
-body {
-    background: #080808 !important;
-}
-
-#main-content {
-    background: transparent !important;
 }
