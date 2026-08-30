@@ -1,0 +1,466 @@
+/* =========================================================
+   PHASE 4 — THE ARCHIVE
+========================================================= */
+
+.archive-section {
+    min-height: 100vh;
+}
+
+.archive-intro {
+    max-width: 760px;
+}
+
+.archive-subtitle {
+    max-width: 560px;
+    margin-top: 28px;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    line-height: 1.45;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   ARCHIVE GRID
+========================================================= */
+
+.archive-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-top: 65px;
+}
+
+
+/* =========================================================
+   ARCHIVE CARD
+========================================================= */
+
+.archive-card {
+    position: relative;
+
+    min-height: 280px;
+
+    padding: 32px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.09);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.028),
+            rgba(255,255,255,0.006)
+        );
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.5s
+        cubic-bezier(.22,1,.36,1),
+
+        border-color 0.4s ease,
+
+        background 0.4s ease,
+
+        box-shadow 0.4s ease;
+}
+
+
+.archive-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(199,167,106,0.12),
+            transparent 45%
+        );
+
+    opacity: 0;
+
+    transition: opacity 0.5s ease;
+
+    pointer-events: none;
+}
+
+
+.archive-card:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(199,167,106,0.45);
+
+    background:
+        rgba(199,167,106,0.035);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.25);
+}
+
+
+.archive-card:hover::before {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.archive-number {
+    font-family: Inter, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 0.3em;
+
+    color: var(--gold);
+}
+
+
+.archive-card h3 {
+    margin:
+        65px 0 14px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 38px;
+
+    font-weight: 400;
+
+    color: var(--white);
+}
+
+
+.archive-card p {
+    max-width: 390px;
+
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 18px;
+
+    line-height: 1.4;
+
+    color: var(--muted);
+}
+
+
+.archive-open {
+    position: absolute;
+
+    right: 30px;
+    bottom: 28px;
+
+    font-family: Inter, sans-serif;
+
+    font-size: 7px;
+
+    letter-spacing: 0.25em;
+
+    color:
+        rgba(243,239,231,0.45);
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.archive-card:hover .archive-open {
+    color: var(--gold-light);
+
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================================
+   ARCHIVE MODAL
+========================================================= */
+
+.archive-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99980;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    background:
+        rgba(5,5,5,0.96);
+
+    backdrop-filter:
+        blur(20px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+
+.archive-modal.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+.archive-modal-content {
+    width:
+        min(700px, 92vw);
+
+    max-height:
+        85vh;
+
+    overflow-y: auto;
+
+    padding:
+        55px 45px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(199,167,106,0.28);
+
+    background:
+        #0d0d0d;
+
+    transform:
+        translateY(30px)
+        scale(0.97);
+
+    transition:
+        transform 0.6s
+        cubic-bezier(.22,1,.36,1);
+}
+
+
+.archive-modal.active
+.archive-modal-content {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.archive-modal-number {
+    font-family: Inter, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 0.3em;
+
+    color: var(--gold);
+}
+
+
+.archive-modal h2 {
+    margin:
+        25px 0 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-weight: 400;
+
+    font-size:
+        clamp(48px, 8vw, 82px);
+
+    line-height: 0.9;
+
+    letter-spacing: -0.04em;
+
+    color: var(--white);
+}
+
+
+.archive-modal-text {
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 23px;
+
+    line-height: 1.5;
+
+    color: var(--muted);
+}
+
+
+.archive-result {
+    margin-top: 45px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+
+.archive-result strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-weight: 400;
+
+    font-size: 42px;
+
+    color: var(--gold-light);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.archive-close {
+    margin-top: 40px;
+
+    padding: 13px 20px;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        transparent;
+
+    color: var(--white);
+
+    font-family: Inter, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 0.25em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.archive-close:hover {
+    background:
+        rgba(199,167,106,0.08);
+
+    border-color:
+        var(--gold);
+}
+
+
+/* =========================================================
+   SPECIAL CARD
+========================================================= */
+
+.archive-card.future-card {
+    grid-column: span 2;
+
+    min-height: 250px;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+.future-card h3 {
+    font-size:
+        clamp(42px, 6vw, 72px);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .archive-grid {
+        grid-template-columns: 1fr;
+
+        margin-top: 45px;
+    }
+
+
+    .archive-card {
+        min-height: 245px;
+
+        padding: 25px;
+    }
+
+
+    .archive-card h3 {
+        margin-top: 50px;
+
+        font-size: 34px;
+    }
+
+
+    .archive-card.future-card {
+        grid-column: span 1;
+
+        min-height: 240px;
+    }
+
+
+    .archive-modal-content {
+        padding:
+            40px 25px;
+    }
+
+
+    .archive-modal-text {
+        font-size: 20px;
+    }
+
+}

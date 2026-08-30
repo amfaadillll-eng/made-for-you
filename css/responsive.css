@@ -1,0 +1,495 @@
+```css
+/* =========================================================
+   MADE FOR YOU
+   PHASE 2 — RESPONSIVE SYSTEM
+========================================================= */
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .section {
+
+        padding:
+            110px 7vw;
+
+    }
+
+    .section-number {
+
+        left: 7vw;
+
+    }
+
+    .section-title {
+
+        font-size:
+            clamp(55px, 11vw, 100px);
+
+    }
+
+    .hero-title {
+
+        font-size:
+            clamp(90px, 18vw, 180px);
+
+    }
+
+    .effort-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .effort-item:nth-child(2) {
+
+        border-right:
+            none;
+
+    }
+
+    .effort-item:nth-child(1),
+    .effort-item:nth-child(2) {
+
+        border-bottom:
+            1px solid var(--border-soft);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+
+    /* -----------------------------------------
+       BODY
+    ----------------------------------------- */
+
+    body {
+
+        cursor: auto;
+
+    }
+
+    .cursor {
+
+        display: none;
+
+    }
+
+
+    /* -----------------------------------------
+       SECTIONS
+    ----------------------------------------- */
+
+    .section {
+
+        min-height:
+            100svh;
+
+        padding:
+            100px 22px;
+
+    }
+
+
+    .section-number {
+
+        top: 28px;
+
+        left: 22px;
+
+        font-size: 7px;
+
+    }
+
+
+    /* -----------------------------------------
+       TYPOGRAPHY
+    ----------------------------------------- */
+
+    .eyebrow {
+
+        font-size: 7px;
+
+        letter-spacing:
+            0.3em;
+
+        margin-bottom:
+            22px;
+
+    }
+
+    .section-title {
+
+        font-size:
+            clamp(52px, 15vw, 85px);
+
+        line-height:
+            0.88;
+
+    }
+
+
+    /* -----------------------------------------
+       INTRO
+    ----------------------------------------- */
+
+    .hero-title {
+
+        font-size:
+            clamp(78px, 24vw, 135px);
+
+        line-height:
+            0.75;
+
+    }
+
+    .hero-title span:nth-child(2) {
+
+        padding-left:
+            0.2em;
+
+    }
+
+    .hero-description {
+
+        max-width:
+            260px;
+
+        margin-top:
+            45px;
+
+        font-size:
+            10px;
+
+        line-height:
+            1.7;
+
+    }
+
+    .intro-footer {
+
+        left: 22px;
+
+        right: 22px;
+
+        bottom: 25px;
+
+        font-size: 6px;
+
+    }
+
+
+    /* -----------------------------------------
+       BUTTON
+    ----------------------------------------- */
+
+    .primary-button {
+
+        margin-top:
+            32px;
+
+        padding:
+            15px 18px;
+
+        font-size:
+            7px;
+
+        letter-spacing:
+            0.18em;
+
+    }
+
+
+    /* -----------------------------------------
+       WELCOME
+    ----------------------------------------- */
+
+    .story-text {
+
+        margin-top:
+            38px;
+
+    }
+
+    .story-text p {
+
+        font-size:
+            14px;
+
+        line-height:
+            1.8;
+
+    }
+
+    .story-text .highlight-text {
+
+        font-size:
+            27px;
+
+    }
+
+
+    /* -----------------------------------------
+       CHARACTER
+    ----------------------------------------- */
+
+    .character-orb {
+
+        width:
+            150px;
+
+        height:
+            150px;
+
+    }
+
+    .character-display {
+
+        margin:
+            55px 0 45px;
+
+    }
+
+    .stats-container {
+
+        width:
+            100%;
+
+    }
+
+
+    /* -----------------------------------------
+       VIBE
+    ----------------------------------------- */
+
+    .vibe-section {
+
+        padding-top:
+            110px;
+
+    }
+
+    .question {
+
+        margin-top:
+            55px;
+
+    }
+
+    .question h3 {
+
+        font-size:
+            30px;
+
+    }
+
+    .choice-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .choice {
+
+        min-height:
+            62px;
+
+    }
+
+
+    /* -----------------------------------------
+       ALGORITHM
+    ----------------------------------------- */
+
+    .analysis-screen {
+
+        width:
+            100%;
+
+    }
+
+    .result-title {
+
+        font-size:
+            clamp(65px, 18vw, 105px);
+
+    }
+
+
+    /* -----------------------------------------
+       DETAIL CARDS
+    ----------------------------------------- */
+
+    .detail-cards {
+
+        grid-template-columns:
+            1fr;
+
+        margin-top:
+            55px;
+
+    }
+
+    .detail-card {
+
+        min-height:
+            240px;
+
+        padding:
+            30px;
+
+    }
+
+    .detail-card h3 {
+
+        margin-top:
+            40px;
+
+        font-size:
+            38px;
+
+    }
+
+
+    /* -----------------------------------------
+       EFFORT
+    ----------------------------------------- */
+
+    .answer {
+
+        font-size:
+            60px;
+
+    }
+
+    .effort-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        margin-top:
+            55px;
+
+    }
+
+    .effort-item {
+
+        padding:
+            30px 12px;
+
+    }
+
+    .effort-value {
+
+        font-size:
+            42px;
+
+    }
+
+    .effort-label {
+
+        font-size:
+            6px;
+
+        line-height:
+            1.5;
+
+    }
+
+
+    /* -----------------------------------------
+       FINALE
+    ----------------------------------------- */
+
+    .finale-small {
+
+        font-size:
+            32px;
+
+    }
+
+    .finale-title {
+
+        font-size:
+            clamp(75px, 22vw, 125px);
+
+    }
+
+    .finale-message {
+
+        margin-top:
+            50px;
+
+        font-size:
+            10px;
+
+    }
+
+    .final-statement {
+
+        font-size:
+            24px;
+
+    }
+
+
+    /* -----------------------------------------
+       FLOATING CONTROLS
+    ----------------------------------------- */
+
+    .section-progress {
+
+        right:
+            16px;
+
+        font-size:
+            6px;
+
+    }
+
+    .sound-toggle {
+
+        left:
+            22px;
+
+        bottom:
+            22px;
+
+    }
+
+    .secret-star {
+
+        right:
+            20px;
+
+        bottom:
+            22px;
+
+    }
+
+
+    /* -----------------------------------------
+       SECRET
+    ----------------------------------------- */
+
+    .secret-content h2 {
+
+        font-size:
+            65px;
+
+    }
+
+}
+```

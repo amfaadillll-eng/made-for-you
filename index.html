@@ -1,0 +1,3367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A little something made with unnecessary amounts of effort."
+    >
+
+    <meta
+        name="theme-color"
+        content="#080808"
+    >
+
+    <meta
+        name="color-scheme"
+        content="dark"
+    >
+
+    <title>Made For You</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         YOUR CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/animations.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+<link
+    rel="stylesheet"
+    href="css/archive.css"
+>
+
+
+
+    <!-- =====================================================
+         CRITICAL THEME OVERRIDE
+
+         This guarantees the dark theme even if another
+         CSS rule is accidentally setting white backgrounds.
+    ====================================================== -->
+
+    <style>
+
+        :root {
+            color-scheme: dark;
+
+            --black: #080808;
+            --black-soft: #0d0d0d;
+            --black-card: #111111;
+
+            --gold: #c7a76a;
+            --gold-light: #ead6a5;
+
+            --white: #f3efe7;
+            --muted: #99938a;
+
+            --border: rgba(199, 167, 106, 0.20);
+        }
+
+
+        html {
+            background: #080808 !important;
+            color: #f3efe7;
+
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(199,167,106,0.045),
+                    transparent 35%
+                ),
+                #080808 !important;
+
+            color: #f3efe7 !important;
+
+            overflow-x: hidden;
+        }
+
+
+        body,
+        main,
+        section,
+        .section,
+        .intro-section,
+        .welcome-section,
+        .character-section,
+        .vibe-section,
+        .algorithm-section,
+        .little-things-section,
+        .effort-section,
+        .finale-section {
+            background-color: transparent !important;
+        }
+
+
+        #main-content {
+            background: transparent !important;
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =================================================
+           BACKGROUND
+        ================================================= */
+
+        .background {
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100vh;
+
+            background: #080808 !important;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        .background-glow {
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            left: 50%;
+            top: 30%;
+
+            transform: translate(-50%, -50%);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(199,167,106,0.075) 0%,
+                    rgba(199,167,106,0.025) 28%,
+                    transparent 70%
+                );
+
+            filter: blur(20px);
+
+            pointer-events: none;
+        }
+
+
+        .grain {
+            position: absolute;
+
+            inset: -50%;
+
+            opacity: 0.045;
+
+            pointer-events: none;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+
+            animation: grainMove 0.25s steps(2) infinite;
+        }
+
+
+        @keyframes grainMove {
+
+            0% {
+                transform: translate(0,0);
+            }
+
+            25% {
+                transform: translate(2%, -1%);
+            }
+
+            50% {
+                transform: translate(-1%, 2%);
+            }
+
+            75% {
+                transform: translate(1%, 1%);
+            }
+
+            100% {
+                transform: translate(-2%, -1%);
+            }
+
+        }
+
+
+        .particles {
+            position: absolute;
+
+            inset: 0;
+
+            overflow: hidden;
+        }
+
+
+        .particle {
+            position: absolute;
+
+            display: block;
+
+            border-radius: 50%;
+
+            background: var(--gold);
+
+            box-shadow:
+                0 0 10px
+                rgba(199,167,106,0.35);
+
+            pointer-events: none;
+        }
+
+
+        /* =================================================
+           LOADER
+        ================================================= */
+
+        .loader {
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: #080808 !important;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 99999;
+
+            transition:
+                opacity 0.9s ease,
+                visibility 0.9s ease;
+        }
+
+
+        .loader-hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none;
+        }
+
+
+        .loader-content {
+            width: min(360px, 75vw);
+
+            text-align: center;
+        }
+
+
+        .loader-symbol {
+            color: var(--gold);
+
+            font-size: 28px;
+
+            margin-bottom: 24px;
+
+            animation:
+                loaderPulse 1.8s ease-in-out infinite;
+        }
+
+
+        @keyframes loaderPulse {
+
+            0%,
+            100% {
+                opacity: 0.35;
+                transform: scale(0.9);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        .loader-title {
+            font-family: Inter, sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 0.45em;
+
+            color: var(--white);
+
+            margin-left: 0.45em;
+
+            margin-bottom: 24px;
+        }
+
+
+        .loader-line {
+            height: 1px;
+
+            width: 100%;
+
+            background:
+                rgba(255,255,255,0.12);
+
+            overflow: hidden;
+        }
+
+
+        .loader-line span {
+            display: block;
+
+            width: 0%;
+
+            height: 100%;
+
+            background: var(--gold);
+
+            box-shadow:
+                0 0 12px
+                rgba(199,167,106,0.6);
+
+            transition: width 0.15s linear;
+        }
+
+
+        .loader-percentage {
+            margin-top: 14px;
+
+            font-family: Inter, sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 0.25em;
+
+            color: var(--muted);
+        }
+
+
+        /* =================================================
+           CUSTOM CURSOR
+        ================================================= */
+
+        .cursor {
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 100000;
+        }
+
+
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            transform:
+                translate(-50%, -50%);
+
+            pointer-events: none;
+
+            border-radius: 50%;
+        }
+
+
+        .cursor-dot {
+            width: 5px;
+            height: 5px;
+
+            background: var(--gold);
+
+            box-shadow:
+                0 0 10px
+                rgba(199,167,106,0.8);
+        }
+
+
+        .cursor-outline {
+            width: 34px;
+            height: 34px;
+
+            border: 1px solid
+                rgba(199,167,106,0.55);
+
+            transition:
+                width 0.25s ease,
+                height 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+
+        @media (max-width: 800px) {
+
+            .cursor {
+                display: none;
+            }
+
+        }
+
+
+        /* =================================================
+           GENERAL SECTION
+        ================================================= */
+
+        .section {
+            position: relative;
+
+            min-height: 100vh;
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                120px
+                clamp(24px, 7vw, 120px);
+        }
+
+
+        .section-content,
+        .intro-content,
+        .algorithm-content,
+        .finale-content {
+            position: relative;
+
+            z-index: 3;
+
+            width: min(100%, 1000px);
+        }
+
+
+        .section-number {
+            position: absolute;
+
+            top: 34px;
+            left: 42px;
+
+            font-family: Inter, sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 0.35em;
+
+            color:
+                rgba(243,239,231,0.35);
+
+            z-index: 5;
+        }
+
+
+        .eyebrow {
+            font-family: Inter, sans-serif;
+
+            font-size: 9px;
+
+            font-weight: 500;
+
+            letter-spacing: 0.42em;
+
+            color: var(--gold);
+
+            margin-bottom: 28px;
+        }
+
+
+        .section-title {
+            margin: 0;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-weight: 400;
+
+            font-size:
+                clamp(52px, 7vw, 100px);
+
+            line-height: 0.92;
+
+            letter-spacing: -0.035em;
+
+            color: var(--white);
+        }
+
+
+        .section-description {
+            margin-top: 25px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 22px;
+
+            color: var(--muted);
+        }
+
+
+        /* =================================================
+           INTRO
+        ================================================= */
+
+        .intro-content {
+            max-width: 900px;
+        }
+
+
+        .hero-title {
+            margin: 0;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-weight: 400;
+
+            font-size:
+                clamp(80px, 13vw, 190px);
+
+            line-height: 0.76;
+
+            letter-spacing: -0.055em;
+
+            color: var(--white);
+        }
+
+
+        .hero-title span {
+            display: block;
+        }
+
+
+        .hero-description {
+            margin-top: 55px;
+
+            max-width: 470px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 24px;
+
+            line-height: 1.35;
+
+            color: var(--muted);
+        }
+
+
+        .intro-footer {
+            position: absolute;
+
+            left: 42px;
+            right: 42px;
+            bottom: 34px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-family: Inter, sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.3em;
+
+            color:
+                rgba(243,239,231,0.35);
+        }
+
+
+        /* =================================================
+           BUTTONS
+        ================================================= */
+
+        .primary-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 32px;
+
+            margin-top: 45px;
+
+            padding: 17px 24px;
+
+            border: 1px solid var(--border);
+
+            background:
+                rgba(255,255,255,0.025);
+
+            color: var(--white);
+
+            font-family: Inter, sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 0.28em;
+
+            cursor: pointer;
+
+            transition:
+                background 0.35s ease,
+                border-color 0.35s ease,
+                color 0.35s ease,
+                transform 0.25s ease;
+        }
+
+
+        .primary-button:hover {
+            background:
+                rgba(199,167,106,0.09);
+
+            border-color:
+                rgba(199,167,106,0.7);
+
+            color: var(--gold-light);
+        }
+
+
+        .button-arrow {
+            color: var(--gold);
+
+            font-size: 15px;
+        }
+
+
+        .text-button {
+            margin-top: 55px;
+
+            padding: 0;
+
+            border: 0;
+
+            background: transparent;
+
+            color: var(--white);
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        .text-button span {
+            display: inline-block;
+
+            margin-left: 12px;
+
+            color: var(--gold);
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .text-button:hover {
+            color: var(--gold-light);
+
+            transform: translateX(4px);
+        }
+
+
+        .text-button:hover span {
+            transform: translateX(7px);
+        }
+
+
+        /* =================================================
+           WELCOME
+        ================================================= */
+
+        .story-text {
+            margin-top: 55px;
+
+            max-width: 620px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 25px;
+
+            line-height: 1.35;
+
+            color: #b9b3aa;
+        }
+
+
+        .story-text p {
+            margin: 0 0 22px;
+        }
+
+
+        .story-text .highlight-text {
+            margin-top: 50px;
+
+            font-size: 36px;
+
+            color: var(--white);
+        }
+
+
+        /* =================================================
+           CHARACTER
+        ================================================= */
+
+        .character-display {
+            margin:
+                65px 0 55px;
+
+            text-align: center;
+        }
+
+
+        .character-orb {
+            width: 150px;
+            height: 150px;
+
+            margin: 0 auto 22px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(199,167,106,0.35);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(199,167,106,0.13),
+                    rgba(199,167,106,0.025) 55%,
+                    transparent 72%
+                );
+
+            box-shadow:
+                0 0 80px
+                rgba(199,167,106,0.08);
+
+            animation:
+                orbFloat 5s ease-in-out infinite;
+        }
+
+
+        .orb-inner {
+            color: var(--gold);
+
+            font-size: 28px;
+
+            animation:
+                orbRotate 8s linear infinite;
+        }
+
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+
+        @keyframes orbRotate {
+
+            from {
+                transform: rotate(0);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        .character-label {
+            font-family: Inter, sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.38em;
+
+            color: var(--muted);
+        }
+
+
+        .stats-container {
+            width: min(620px, 100%);
+
+            margin: auto;
+        }
+
+
+        .stat {
+            margin-bottom: 25px;
+        }
+
+
+        .stat-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            font-family: Inter, sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.25em;
+
+            color: var(--muted);
+        }
+
+
+        .stat-bar {
+            height: 2px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            overflow: hidden;
+        }
+
+
+        .stat-fill {
+            display: block;
+
+            width: 0;
+
+            height: 100%;
+
+            background: var(--gold);
+
+            box-shadow:
+                0 0 10px
+                rgba(199,167,106,0.45);
+
+            transition:
+                width 1.4s
+                cubic-bezier(.22,1,.36,1);
+        }
+
+
+        /* =================================================
+           QUESTIONS
+        ================================================= */
+
+        .question {
+            margin-top: 55px;
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.08);
+        }
+
+
+        .question-number {
+            font-family: Inter, sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.3em;
+
+            color: var(--gold);
+
+            margin-bottom: 15px;
+        }
+
+
+        .question h3 {
+            margin: 0 0 25px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-weight: 400;
+
+            font-size: 30px;
+
+            color: var(--white);
+        }
+
+
+        .choice-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 10px;
+        }
+
+
+        .choice {
+            min-height: 54px;
+
+            padding: 15px;
+
+            background:
+                rgba(255,255,255,0.018);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.09);
+
+            color: #aaa49b;
+
+            font-family: Inter, sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.2em;
+
+            cursor: pointer;
+
+            transition:
+                all 0.3s ease;
+        }
+
+
+        .choice:hover {
+            color: var(--white);
+
+            border-color:
+                rgba(199,167,106,0.45);
+
+            background:
+                rgba(199,167,106,0.045);
+        }
+
+
+        .choice.selected {
+            color: var(--gold-light);
+
+            border-color: var(--gold);
+
+            background:
+                rgba(199,167,106,0.09);
+
+            box-shadow:
+                inset 0 0 25px
+                rgba(199,167,106,0.025);
+        }
+
+
+        /* =================================================
+           ALGORITHM
+        ================================================= */
+
+        .algorithm-content {
+            max-width: 720px;
+
+            margin: auto;
+        }
+
+
+        .analysis-screen {
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+
+        .analysis-status {
+            margin-top: 30px;
+
+            font-family: Inter, sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 0.25em;
+
+            color: var(--muted);
+
+            transition:
+                opacity 0.5s ease;
+        }
+
+
+        .analysis-bar {
+            width: 100%;
+
+            height: 1px;
+
+            margin-top: 13px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            overflow: hidden;
+        }
+
+
+        .analysis-bar span {
+            display: block;
+
+            width: 0%;
+
+            height: 100%;
+
+            background: var(--gold);
+
+            transition:
+                width 0.85s
+                cubic-bezier(.22,1,.36,1);
+        }
+
+
+        .result-screen {
+            display: none;
+
+            text-align: center;
+        }
+
+
+        .result-screen h2 {
+            margin: 0 0 25px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-weight: 400;
+
+            font-size: 30px;
+
+            color: var(--muted);
+        }
+
+
+        .result-title {
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(65px, 10vw, 125px);
+
+            line-height: 0.78;
+
+            letter-spacing: -0.05em;
+
+            color: var(--white);
+        }
+
+
+        .result-screen p {
+            margin-top: 30px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 20px;
+
+            color: var(--muted);
+        }
+
+
+        /* =================================================
+           LITTLE THINGS
+        ================================================= */
+
+        .detail-cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin-top: 60px;
+        }
+
+
+        .detail-card {
+            min-height: 210px;
+
+            padding: 30px;
+
+            box-sizing: border-box;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.025),
+                    rgba(255,255,255,0.008)
+                );
+
+            transition:
+                transform 0.45s ease,
+                border-color 0.45s ease,
+                background 0.45s ease,
+                opacity 0.3s ease;
+        }
+
+
+        .detail-card:hover {
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(199,167,106,0.35);
+
+            background:
+                rgba(199,167,106,0.035);
+        }
+
+
+        .card-number {
+            font-family: Inter, sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.25em;
+
+            color: var(--gold);
+        }
+
+
+        .detail-card h3 {
+            margin:
+                50px 0 12px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 34px;
+
+            font-weight: 400;
+
+            color: var(--white);
+        }
+
+
+        .detail-card p {
+            margin: 0;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 18px;
+
+            line-height: 1.35;
+
+            color: var(--muted);
+        }
+
+
+        /* =================================================
+           EFFORT
+        ================================================= */
+
+        .answer {
+            margin-top: 20px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 65px;
+
+            color: var(--gold);
+        }
+
+
+        .effort-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-top: 65px;
+        }
+
+
+        .effort-item {
+            padding: 25px 10px;
+
+            text-align: center;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.08);
+        }
+
+
+        .effort-value {
+            display: block;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 58px;
+
+            color: var(--white);
+        }
+
+
+        .effort-label {
+            display: block;
+
+            margin-top: 7px;
+
+            font-family: Inter, sans-serif;
+
+            font-size: 7px;
+
+            line-height: 1.5;
+
+            letter-spacing: 0.2em;
+
+            color: var(--muted);
+        }
+
+
+        .effort-ending {
+            margin-top: 70px;
+        }
+
+
+        .effort-ending p {
+            margin: 0;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 20px;
+
+            color: var(--muted);
+        }
+
+
+        .effort-ending h3 {
+            margin: 8px 0 0;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-weight: 400;
+
+            font-size: 46px;
+
+            color: var(--white);
+        }
+
+
+        /* =================================================
+           FINALE
+        ================================================= */
+
+        .finale-content {
+            text-align: center;
+
+            max-width: 900px;
+        }
+
+
+        .finale-small {
+            margin: 0 0 25px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 32px;
+
+            font-weight: 400;
+
+            color: var(--muted);
+        }
+
+
+        .finale-title {
+            margin: 0;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(80px, 15vw, 190px);
+
+            line-height: 0.75;
+
+            font-weight: 400;
+
+            letter-spacing: -0.055em;
+
+            color: var(--white);
+        }
+
+
+        .finale-message {
+            margin-top: 65px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 22px;
+
+            line-height: 1.5;
+
+            color: var(--muted);
+        }
+
+
+        .finale-message p {
+            margin: 5px;
+        }
+
+
+        .final-statement {
+            margin-top: 55px;
+        }
+
+
+        .final-statement p {
+            margin: 0 0 8px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 24px;
+
+            color: var(--muted);
+        }
+
+
+        .final-statement strong {
+            display: block;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-weight: 400;
+
+            font-size:
+                clamp(30px, 4vw, 48px);
+
+            color: var(--white);
+        }
+
+
+        .final-symbol {
+            margin-top: 55px;
+
+            color: var(--gold);
+
+            font-size: 28px;
+
+            animation:
+                finalPulse 2.5s ease-in-out infinite;
+        }
+
+
+        @keyframes finalPulse {
+
+            0%,
+            100% {
+                opacity: 0.35;
+                transform: scale(0.9);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+        }
+
+
+        .final-note {
+            margin-top: 25px;
+
+            font-family: Inter, sans-serif;
+
+            font-size: 8px;
+
+            letter-spacing: 0.25em;
+
+            color: var(--muted);
+        }
+
+
+        /* =================================================
+           FLOATING PROGRESS
+        ================================================= */
+
+        .section-progress {
+            position: fixed;
+
+            right: 30px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 9px;
+
+            font-family: Inter, sans-serif;
+
+            font-size: 7px;
+
+            letter-spacing: 0.15em;
+
+            color:
+                rgba(243,239,231,0.4);
+
+            z-index: 20;
+        }
+
+
+        .progress-line {
+            width: 1px;
+
+            height: 70px;
+
+            background:
+                rgba(255,255,255,0.15);
+        }
+
+
+        .progress-current {
+            color: var(--gold);
+        }
+
+
+        /* =================================================
+           SOUND
+        ================================================= */
+
+        .sound-toggle {
+            position: fixed;
+
+            left: 30px;
+            bottom: 30px;
+
+            z-index: 30;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 0;
+
+            border: 0;
+
+            background: transparent;
+
+            color:
+                rgba(243,239,231,0.4);
+
+            font-family: Inter, sans-serif;
+
+            font-size: 7px;
+
+            letter-spacing: 0.2em;
+
+            cursor: pointer;
+        }
+
+
+        .sound-icon {
+            color: var(--gold);
+
+            font-size: 14px;
+        }
+
+
+        /* =================================================
+           SECRET
+        ================================================= */
+
+        .secret-star {
+            position: fixed;
+
+            right: 30px;
+            bottom: 30px;
+
+            width: 30px;
+            height: 30px;
+
+            border: 0;
+
+            background: transparent;
+
+            color:
+                rgba(199,167,106,0.45);
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+            z-index: 30;
+
+            transition:
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        .secret-star:hover {
+            color: var(--gold);
+
+            transform:
+                rotate(45deg)
+                scale(1.15);
+        }
+
+
+        /* =================================================
+           SECRET OVERLAY
+        ================================================= */
+
+        .secret-overlay {
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            box-sizing: border-box;
+
+            background:
+                rgba(5,5,5,0.96);
+
+            backdrop-filter:
+                blur(15px);
+
+            z-index: 99990;
+        }
+
+
+        .secret-content {
+            width: min(500px, 90vw);
+
+            text-align: center;
+
+            padding: 60px 30px;
+
+            border:
+                1px solid
+                rgba(199,167,106,0.22);
+
+            background:
+                rgba(255,255,255,0.02);
+        }
+
+
+        .secret-symbol {
+            color: var(--gold);
+
+            font-size: 30px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .secret-content h2 {
+            margin: 0;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 60px;
+
+            font-weight: 400;
+
+            color: var(--white);
+        }
+
+
+        .secret-content p {
+            margin: 10px 0;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size: 21px;
+
+            color: var(--muted);
+        }
+
+
+        .secret-content .primary-button {
+            margin-top: 35px;
+        }
+
+
+        /* =================================================
+           REVEAL ANIMATION
+        ================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s
+                cubic-bezier(.22,1,.36,1);
+        }
+
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 700px) {
+
+            .section {
+                min-height: 100svh;
+
+                padding:
+                    100px 24px;
+            }
+
+
+            .section-number {
+                top: 25px;
+                left: 24px;
+            }
+
+
+            .intro-footer {
+                left: 24px;
+                right: 24px;
+                bottom: 25px;
+            }
+
+
+            .hero-title {
+                font-size:
+                    clamp(68px, 20vw, 120px);
+            }
+
+
+            .hero-description {
+                font-size: 21px;
+
+                margin-top: 40px;
+            }
+
+
+            .section-title {
+                font-size:
+                    clamp(55px, 15vw, 85px);
+            }
+
+
+            .story-text {
+                font-size: 22px;
+            }
+
+
+            .story-text .highlight-text {
+                font-size: 29px;
+            }
+
+
+            .choice-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .detail-cards {
+                grid-template-columns: 1fr;
+            }
+
+
+            .effort-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .section-progress {
+                display: none;
+            }
+
+
+            .sound-toggle {
+                left: 20px;
+                bottom: 20px;
+            }
+
+
+            .secret-star {
+                right: 18px;
+                bottom: 18px;
+            }
+
+
+            .finale-title {
+                font-size:
+                    clamp(65px, 19vw, 120px);
+            }
+
+        }
+
+
+        /* =================================================
+           ACCESSIBILITY
+        ================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                scroll-behavior: auto !important;
+
+                transition-duration:
+                    0.01ms !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         CUSTOM CURSOR
+    ====================================================== -->
+
+    <div class="cursor">
+
+        <div class="cursor-dot"></div>
+
+        <div class="cursor-outline"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         LOADER
+    ====================================================== -->
+
+    <div
+        id="loader"
+        class="loader"
+    >
+
+        <div class="loader-content">
+
+            <div class="loader-symbol">
+                ✦
+            </div>
+
+            <div class="loader-title">
+                MADE FOR YOU
+            </div>
+
+            <div class="loader-line">
+
+                <span></span>
+
+            </div>
+
+            <div class="loader-percentage">
+                0%
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
+
+    <div class="background">
+
+        <div class="background-glow"></div>
+
+        <div class="grain"></div>
+
+        <div
+            id="particles"
+            class="particles"
+        ></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN EXPERIENCE
+    ====================================================== -->
+
+    <main id="main-content">
+
+
+        <!-- =================================================
+             SECTION 01 — INTRO
+        ================================================== -->
+
+        <section
+            id="intro"
+            class="section intro-section"
+        >
+
+            <div class="section-number">
+                01 / 08
+            </div>
+
+
+            <div class="intro-content">
+
+                <div class="eyebrow">
+                    A SMALL PROJECT
+                </div>
+
+
+                <h1 class="hero-title">
+
+                    <span>I</span>
+
+                    <span>MADE</span>
+
+                    <span>THIS.</span>
+
+                </h1>
+
+
+                <p class="hero-description">
+                    You don't have to figure out why yet.
+                </p>
+
+
+                <button
+                    class="primary-button"
+                    id="enterButton"
+                >
+
+                    <span>
+                        ENTER EXPERIENCE
+                    </span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <div class="intro-footer">
+
+                <span>
+                    EST. 2026
+                </span>
+
+                <span>
+                    ✦
+                </span>
+
+                <span>
+                    JUST BECAUSE
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECTION 02 — WELCOME
+        ================================================== -->
+
+        <section
+            id="welcome"
+            class="section welcome-section"
+        >
+
+            <div class="section-number">
+                02 / 08
+            </div>
+
+
+            <div class="section-content">
+
+                <div class="eyebrow">
+                    WELCOME
+                </div>
+
+
+                <h2 class="section-title">
+
+                    You weren't
+                    <br>
+                    expecting this.
+
+                </h2>
+
+
+                <div class="story-text">
+
+                    <p>
+                        Neither was I.
+                    </p>
+
+                    <p>
+                        I could've just sent you a message.
+                    </p>
+
+                    <p class="highlight-text">
+                        But apparently,
+                        I chose the unnecessarily
+                        complicated option.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="text-button next-section"
+                    data-target="character"
+                >
+
+                    Fair enough
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECTION 03 — CHARACTER
+        ================================================== -->
+
+        <section
+            id="character"
+            class="section character-section"
+        >
+
+            <div class="section-number">
+                03 / 08
+            </div>
+
+
+            <div class="section-content">
+
+                <div class="eyebrow">
+                    CHARACTER PROFILE
+                </div>
+
+
+                <h2 class="section-title">
+                    SUBJECT 001
+                </h2>
+
+
+                <div class="character-display">
+
+                    <div class="character-orb">
+
+                        <div class="orb-inner">
+                            ✦
+                        </div>
+
+                    </div>
+
+
+                    <div class="character-label">
+                        LIMITED EDITION HUMAN
+                    </div>
+
+                </div>
+
+
+                <div class="stats-container">
+
+
+                    <div class="stat">
+
+                        <div class="stat-header">
+
+                            <span>
+                                ENERGY
+                            </span>
+
+                            <span>
+                                94
+                            </span>
+
+                        </div>
+
+                        <div class="stat-bar">
+
+                            <span
+                                class="stat-fill"
+                                data-value="94"
+                            ></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-header">
+
+                            <span>
+                                CHAOS
+                            </span>
+
+                            <span>
+                                87
+                            </span>
+
+                        </div>
+
+                        <div class="stat-bar">
+
+                            <span
+                                class="stat-fill"
+                                data-value="87"
+                            ></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-header">
+
+                            <span>
+                                HUMOUR
+                            </span>
+
+                            <span>
+                                91
+                            </span>
+
+                        </div>
+
+                        <div class="stat-bar">
+
+                            <span
+                                class="stat-fill"
+                                data-value="91"
+                            ></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-header">
+
+                            <span>
+                                MYSTERY
+                            </span>
+
+                            <span>
+                                99
+                            </span>
+
+                        </div>
+
+                        <div class="stat-bar">
+
+                            <span
+                                class="stat-fill"
+                                data-value="99"
+                            ></span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    class="text-button next-section"
+                    data-target="vibe"
+                >
+
+                    Continue
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECTION 04 — VIBE / TEST
+        ================================================== -->
+
+        <section
+            id="vibe"
+            class="section vibe-section"
+        >
+
+            <div class="section-number">
+                04 / 08
+            </div>
+
+
+            <div class="section-content">
+
+                <div class="eyebrow">
+                    INTERACTIVE
+                </div>
+
+
+                <h2 class="section-title">
+                    Let's test something.
+                </h2>
+
+
+                <p class="section-description">
+                    Your answers may or may not be judged.
+                </p>
+
+
+                <!-- QUESTION 01 -->
+
+                <div
+                    class="question"
+                    data-question="mood"
+                >
+
+                    <div class="question-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Pick your current mood.
+                    </h3>
+
+
+                    <div class="choice-grid">
+
+                        <button
+                            class="choice"
+                            data-value="calm"
+                        >
+                            CALM
+                        </button>
+
+                        <button
+                            class="choice"
+                            data-value="chaotic"
+                        >
+                            CHAOTIC
+                        </button>
+
+                        <button
+                            class="choice"
+                            data-value="sleepy"
+                        >
+                            SLEEPY
+                        </button>
+
+                        <button
+                            class="choice"
+                            data-value="productive"
+                        >
+                            PRODUCTIVE
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 02 -->
+
+                <div
+                    class="question"
+                    data-question="weapon"
+                >
+
+                    <div class="question-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Choose your weapon.
+                    </h3>
+
+
+                    <div class="choice-grid">
+
+                        <button
+                            class="choice"
+                            data-value="coffee"
+                        >
+                            COFFEE
+                        </button>
+
+                        <button
+                            class="choice"
+                            data-value="food"
+                        >
+                            FOOD
+                        </button>
+
+                        <button
+                            class="choice"
+                            data-value="music"
+                        >
+                            MUSIC
+                        </button>
+
+                        <button
+                            class="choice"
+                            data-value="phone"
+                        >
+                            PHONE
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION 03 -->
+
+                <div
+                    class="question"
+                    data-question="superpower"
+                >
+
+                    <div class="question-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Pick a superpower.
+                    </h3>
+
+
+                    <div class="choice-grid">
+
+                        <button
+                            class="choice"
+                            data-value="overthink"
+                        >
+                            NEVER OVERTHINK
+                        </button>
+
+                        <button
+                            class="choice"
+                            data-value="words"
+                        >
+                            ALWAYS KNOW WHAT TO SAY
+                        </button>
+
+                        <button
+                            class="choice"
+                            data-value="sleep"
+                        >
+                            SLEEP INSTANTLY
+                        </button>
+
+                        <button
+                            class="choice"
+                            data-value="mind"
+                        >
+                            READ MINDS
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-button"
+                    id="calculateButton"
+                >
+
+                    <span>
+                        ANALYZE RESULTS
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECTION 05 — ALGORITHM
+        ================================================== -->
+
+        <section
+            id="algorithm"
+            class="section algorithm-section"
+        >
+
+            <div class="section-number">
+                05 / 08
+            </div>
+
+
+            <div class="algorithm-content">
+
+
+                <div
+                    id="analysisScreen"
+                    class="analysis-screen"
+                >
+
+                    <div class="eyebrow">
+                        PERSONALITY ENGINE
+                    </div>
+
+
+                    <div class="analysis-status">
+                        INITIALIZING...
+                    </div>
+
+                    <div class="analysis-bar">
+                        <span></span>
+                    </div>
+
+
+                    <div class="analysis-status">
+                        ANALYZING RESPONSES...
+                    </div>
+
+                    <div class="analysis-bar">
+                        <span></span>
+                    </div>
+
+
+                    <div class="analysis-status">
+                        CALCULATING CHAOS...
+                    </div>
+
+                    <div class="analysis-bar">
+                        <span></span>
+                    </div>
+
+
+                    <div class="analysis-status">
+                        FINALIZING...
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="resultScreen"
+                    class="result-screen"
+                >
+
+                    <div class="eyebrow">
+                        FINAL RESULT
+                    </div>
+
+
+                    <h2>
+                        YOU ARE...
+                    </h2>
+
+
+                    <div class="result-title">
+                        UNUSUALLY
+                        <br>
+                        INTERESTING.
+                    </div>
+
+
+                    <p>
+                        Further research recommended.
+                    </p>
+
+
+                    <button
+                        class="text-button next-section"
+                        data-target="little-things"
+                    >
+
+                        Continue
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECTION 06 — LITTLE THINGS
+        ================================================== -->
+
+        <section
+            id="little-things"
+            class="section little-things-section"
+        >
+
+            <div class="section-number">
+                06 / 08
+            </div>
+
+
+            <div class="section-content">
+
+                <div class="eyebrow">
+                    THINGS I NOTICED
+                </div>
+
+
+                <h2 class="section-title">
+                    Little things.
+                </h2>
+
+
+                <div class="detail-cards">
+
+
+                    <article class="detail-card">
+
+                        <span class="card-number">
+                            01
+                        </span>
+
+                        <h3>
+                            Specific.
+                        </h3>
+
+                        <p>
+                            You have a very specific
+                            way of doing things.
+                        </p>
+
+                    </article>
+
+
+                    <article class="detail-card">
+
+                        <span class="card-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Personality.
+                        </h3>
+
+                        <p>
+                            You probably don't realize
+                            how much personality you have.
+                        </p>
+
+                    </article>
+
+
+                    <article class="detail-card">
+
+                        <span class="card-number">
+                            03
+                        </span>
+
+                        <h3>
+                            This website.
+                        </h3>
+
+                        <p>
+                            Somehow you made me spend
+                            hours building this.
+                        </p>
+
+                    </article>
+
+
+                    <article class="detail-card">
+
+                        <span class="card-number">
+                            04
+                        </span>
+
+                        <h3>
+                            Worth it.
+                        </h3>
+
+                        <p>
+                            And honestly...
+                            I'm not complaining.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+
+                <button
+                    class="text-button next-section"
+                    data-target="effort"
+                >
+
+                    Keep going
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SECTION 07 — EFFORT
+        ================================================== -->
+
+        <section
+            id="effort"
+            class="section effort-section"
+        >
+
+            <div class="section-number">
+                07 / 08
+            </div>
+
+
+            <div class="section-content">
+
+                <div class="eyebrow">
+                    THE EFFORT
+                </div>
+
+
+                <h2 class="section-title">
+                    Was this necessary?
+                </h2>
+
+
+                <div class="answer">
+                    No.
+                </div>
+
+
+                <div class="effort-grid">
+
+
+                    <div class="effort-item">
+
+                        <span
+                            class="effort-value"
+                            data-count="1"
+                        >
+                            0
+                        </span>
+
+                        <span class="effort-label">
+                            WEBSITE
+                        </span>
+
+                    </div>
+
+
+                    <div class="effort-item">
+
+                        <span
+                            class="effort-value"
+                            data-count="27"
+                        >
+                            0
+                        </span>
+
+                        <span class="effort-label">
+                            IDEAS REJECTED
+                        </span>
+
+                    </div>
+
+
+                    <div class="effort-item">
+
+                        <span
+                            class="effort-value"
+                            data-count="100"
+                        >
+                            0
+                        </span>
+
+                        <span class="effort-label">
+                            LINES OF UNNECESSARY CSS
+                        </span>
+
+                    </div>
+
+
+                    <div class="effort-item">
+
+                        <span class="effort-value">
+                            ∞
+                        </span>
+
+                        <span class="effort-label">
+                            OVERTHINKING
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="effort-ending">
+
+                    <p>
+                        Did I enjoy making it?
+                    </p>
+
+                    <h3>
+                        Absolutely.
+                    </h3>
+
+                </div>
+
+
+                <button
+                    class="text-button next-section"
+                    data-target="archive"
+                >
+
+                    One last thing
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+<!-- =================================================
+     SECTION 08 — THE ARCHIVE
+================================================== -->
+
+<section
+    id="archive"
+    class="section archive-section"
+>
+
+    <div class="section-number">
+        08 / 09
+    </div>
+
+
+    <div class="section-content archive-intro">
+
+        <div class="eyebrow">
+            THE ARCHIVE
+        </div>
+
+
+        <h2 class="section-title">
+            Some things
+            <br>
+            are better
+            <br>
+            discovered slowly.
+        </h2>
+
+
+        <p class="archive-subtitle">
+            A small collection of things that
+            probably didn't need to exist.
+            But here we are.
+        </p>
+
+
+        <div class="archive-grid">
+
+
+            <!-- =====================================
+                 CARD 01
+            ====================================== -->
+
+            <article
+                class="archive-card"
+                data-archive="note"
+            >
+
+                <span class="archive-number">
+                    01
+                </span>
+
+
+                <h3>
+                    A Note
+                </h3>
+
+
+                <p>
+                    Not everything needs
+                    a reason.
+                </p>
+
+
+                <span class="archive-open">
+                    OPEN →
+                </span>
+
+            </article>
+
+
+            <!-- =====================================
+                 CARD 02
+            ====================================== -->
+
+            <article
+                class="archive-card"
+                data-archive="theory"
+            >
+
+                <span class="archive-number">
+                    02
+                </span>
+
+
+                <h3>
+                    A Theory
+                </h3>
+
+
+                <p>
+                    I have a theory
+                    about you.
+                </p>
+
+
+                <span class="archive-open">
+                    INVESTIGATE →
+                </span>
+
+            </article>
+
+
+            <!-- =====================================
+                 CARD 03
+            ====================================== -->
+
+            <article
+                class="archive-card"
+                data-archive="question"
+            >
+
+                <span class="archive-number">
+                    03
+                </span>
+
+
+                <h3>
+                    A Question
+                </h3>
+
+
+                <p>
+                    One completely
+                    unnecessary question.
+                </p>
+
+
+                <span class="archive-open">
+                    ANSWER →
+                </span>
+
+            </article>
+
+
+            <!-- =====================================
+                 CARD 04
+            ====================================== -->
+
+            <article
+                class="archive-card"
+                data-archive="effort"
+            >
+
+                <span class="archive-number">
+                    04
+                </span>
+
+
+                <h3>
+                    The Effort
+                </h3>
+
+
+                <p>
+                    A completely unnecessary
+                    amount of work.
+                </p>
+
+
+                <span class="archive-open">
+                    INSPECT →
+                </span>
+
+            </article>
+
+
+            <!-- =====================================
+                 CARD 05
+            ====================================== -->
+
+            <article
+                class="archive-card future-card"
+                data-archive="future"
+            >
+
+                <div>
+
+                    <span class="archive-number">
+                        05
+                    </span>
+
+
+                    <h3>
+                        The Future File
+                    </h3>
+
+
+                    <p>
+                        This one is empty.
+                        For now.
+                    </p>
+
+                </div>
+
+
+                <span class="archive-open">
+                    OPEN FILE →
+                </span>
+
+            </article>
+
+
+        </div>
+
+
+        <button
+            class="text-button next-section"
+            data-target="finale"
+        >
+
+            One last thing
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+    </div>
+
+</section>
+
+        <!-- =================================================
+             SECTION 09 — FINALE
+        ================================================== -->
+
+        <section
+            id="finale"
+            class="section finale-section"
+        >
+
+            <div class="section-number">
+                09 / 09
+            </div>
+
+
+            <div class="finale-content">
+
+                <div class="eyebrow">
+                    THE END
+                </div>
+
+
+                <h2 class="finale-small">
+                    Anyway...
+                </h2>
+
+
+                <h1 class="finale-title">
+                    THAT'S IT.
+                </h1>
+
+
+                <div class="finale-message">
+
+                    <p>
+                        No hidden confession.
+                    </p>
+
+                    <p>
+                        No dramatic question.
+                    </p>
+
+                    <p>
+                        No catch.
+                    </p>
+
+                </div>
+
+
+                <div class="final-statement">
+
+                    <p>
+                        I just wanted to make something.
+                    </p>
+
+                    <strong>
+                        And I wanted you to have it.
+                    </strong>
+
+                </div>
+
+
+                <div class="final-symbol">
+                    ✦
+                </div>
+
+
+                <p class="final-note">
+                    Hope you liked it.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FLOATING SECTION PROGRESS
+    ====================================================== -->
+
+    <div class="section-progress">
+
+        <span class="progress-current">
+            01
+        </span>
+
+        <span class="progress-line"></span>
+
+        <span>
+            09
+        </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         SOUND
+    ====================================================== -->
+
+    <button
+        id="soundToggle"
+        class="sound-toggle"
+        aria-label="Toggle sound"
+        type="button"
+    >
+
+        <span class="sound-icon">
+            ♪
+        </span>
+
+        <span class="sound-text">
+            SOUND OFF
+        </span>
+
+    </button>
+
+
+    <!-- =====================================================
+         SECRET STAR
+    ====================================================== -->
+
+    <button
+        id="secretStar"
+        class="secret-star"
+        aria-label="Secret"
+        type="button"
+    >
+        ✦
+    </button>
+
+
+    <!-- =====================================================
+         SECRET OVERLAY
+    ====================================================== -->
+
+    <div
+        id="secretOverlay"
+        class="secret-overlay"
+    >
+
+        <div class="secret-content">
+
+            <div class="secret-symbol">
+                ✦
+            </div>
+
+
+            <div class="eyebrow">
+                SECRET FOUND
+            </div>
+
+
+            <h2>
+                Okay...
+            </h2>
+
+
+            <p>
+                You actually found it.
+            </p>
+
+
+            <p>
+                Respect.
+            </p>
+
+
+            <button
+                id="closeSecret"
+                class="primary-button"
+                type="button"
+            >
+                CONTINUE
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         AUDIO
+    ====================================================== -->
+
+    <audio
+        id="backgroundMusic"
+        loop
+        preload="auto"
+    >
+
+        <source
+            src="assets/audio/background.mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/interaction.js"></script>
+<script src="js/easter-egg.js"></script>
+<script src="js/archive.js"></script>
+
+
+<!-- =====================================================
+     LOADER FAILSAFE
+     
+     This guarantees the website cannot remain stuck
+     on the loading screen if another JS file fails.
+====================================================== -->
+
+<script>
+
+(function () {
+
+    const loader = document.getElementById("loader");
+
+    if (!loader) return;
+
+
+    const progress =
+        loader.querySelector(".loader-line span");
+
+    const percentage =
+        loader.querySelector(".loader-percentage");
+
+
+    let value = 0;
+
+
+    /* ---------------------------------------------
+       Animate loader from 0 → 100
+    --------------------------------------------- */
+
+    const interval = setInterval(function () {
+
+        value += Math.floor(Math.random() * 7) + 4;
+
+
+        if (value >= 100) {
+
+            value = 100;
+
+            clearInterval(interval);
+
+        }
+
+
+        if (progress) {
+
+            progress.style.width =
+                value + "%";
+
+        }
+
+
+        if (percentage) {
+
+            percentage.textContent =
+                value + "%";
+
+        }
+
+    }, 70);
+
+
+    /* ---------------------------------------------
+       FORCE LOADER TO DISAPPEAR
+    --------------------------------------------- */
+
+    function hideLoader() {
+
+        clearInterval(interval);
+
+
+        if (progress) {
+
+            progress.style.width = "100%";
+
+        }
+
+
+        if (percentage) {
+
+            percentage.textContent = "100%";
+
+        }
+
+
+        setTimeout(function () {
+
+            loader.classList.add("loader-hidden");
+
+            document.body.classList.add("site-ready");
+
+        }, 350);
+
+    }
+
+
+    /* ---------------------------------------------
+       Normal loading
+    --------------------------------------------- */
+
+    window.addEventListener(
+        "load",
+        function () {
+
+            setTimeout(
+                hideLoader,
+                500
+            );
+
+        }
+    );
+
+
+    /* ---------------------------------------------
+       HARD FAILSAFE
+       
+       Even if another script crashes, the loader
+       will disappear after 4 seconds.
+    --------------------------------------------- */
+
+    setTimeout(
+        hideLoader,
+        4000
+    );
+
+
+})();
+
+</script>
+
+</body>
+
+</html>
